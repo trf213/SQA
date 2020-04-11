@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- font awesome -->
+
+    <!-- <link href="./css/all.css" rel="stylesheet"> -->
+    <script defer src="./js/all.js"></script>
+
+    
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+
+    <link href="./css/feather.css" rel="stylesheet" type="text/css">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+
+<div class="home">
+
+   
+<!-- Non-Fixed Navbar -->
+
+<nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block">
+    <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
+    <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <span id="menu" class="navbar-text d-lg-none text-dark font-weight-bold">ServeYou Hospital</span>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link active" href="#">Home</a>
+            <a class="nav-item nav-link" href="#">Services</a>
+            <a class="nav-item nav-link" href="#">About Us</a>
+            <a class="nav-item nav-link" href="./faq.html">FAQs</a>
+            <a class="nav-item nav-link" href="#">Contact Us</a>
+        </div>
+        <span class="navbar-text ">
+            <form class="form-inline">
+                <a href="./loginadmin.html" class="btn btn-outline-light" type="button">
+                    <i class="feather-user"></i> Admin Sign In
+                </a>
+            </form>
+    </div>
+
+</nav>
+
+<!-- Fixed Navbar -->
+
+<nav id="fixnav" class="navbar navbar-expand-lg navbar-dark navibar fixed-top d-lg-none">
+    <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
+    <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- <span id="menu" class="navbar-text d-lg-none text-light font-weight-bold">MENU</span> -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link active" href="./index.html">Home</a>
+            <a class="nav-item nav-link" href="#">Services</a>
+            <a class="nav-item nav-link" href="#">About Us</a>
+            <a class="nav-item nav-link" href="./faq.html">FAQs</a>
+            <a class="nav-item nav-link" href="#">Contact Us</a>
+        </div>
+        <span class="navbar-text ">
+            <form class="form-inline">
+                <a href="./loginadmin.html" class="btn btn-outline-light" type="button">
+                    <i class="feather-user"></i> Admin Sign In
+                </a>
+            </form>
+    </div>
+
+</nav>
+
+
+<main>
+<!-- header -->
+
+<header id="carousel" class="p-0 bgimg">
+    <div class="container-fluid d-none d-lg-block">
+        <div class="row">
+            <div class="col-6 pt-5">
+                <h1 class="display-4 text-center">Accident & Emergency</h1>
+                <p class="lead text-center">Lorem ipsum dolor sit amet consectetur adipisicing </p>
+                <hr class="my-4 text-center">
+                <p class="text-center"> Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                <!-- <p class="lead text-center">
+                                        <a class="btn btn-primary btn-lg m-auto" href="signup.html" role="button">Register</a>
+                                    </p> -->
+            </div>
+            <div class="col-md-6 p-0 mx-auto text-center">
+                <div id="example" class="carousel slide" data-ride="carousel">
+                    <!-- indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#example" data-slide-to="0" class="active"></li>
+                        <li data-target="#example" data-slide-to="1"></li>
+                        <li data-target="#example" data-slide-to="2"></li>
+                        <li data-target="#example" data-slide-to="3"></li>
+                    </ul>
+                    <!-- images -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="#">
+                                <img src="./img/Doctors1.jpeg" alt="Accident" class="imgheight d-block w-100">
+                            </a>
+                            <div class="carousel-caption trickcenter">
+                                <div>
+                                    <h2>Services</h2>Click Here
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="./faq.html">
+                                <img src="./img/AE2.jpeg" alt="Accident" class="imgheight d-block w-100">
+                            
+                            <div class="carousel-caption trickcenter">
+                                <div>
+                                    <h2>FAQs</h2>Click Here
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="./login.html">
+                                <img src="./img/AE3.jpeg" alt="Accident" class="imgheight d-block w-100">
+                            
+                            <div class="carousel-caption trickcenter">
+                                <div>
+                                    <h2>Ward Info</h2>Click Here
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="./login.html">
+                                <img src="./img/AE1.jpeg" alt="Accident" class="imgheight d-block w-100">
+                            <div class="carousel-caption trickcenter">
+                                <div>
+                                    <h2>Guest Sign In</h2>Click Here
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end of images -->
+                    <!-- controls -->
+
+                    <a href="#example" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="#example" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+
+                    <!-- end of controls -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- end of header -->
+<!-- header -->
+
+
+<!-- app section -->
+
+<section id="apps" class="py-5  d-lg-none">
+    <div class="container">
+        <!-- title -->
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="display-4 text-uppercase text-dark bg-warning mb-0">
+                    <strong>Accident & Emergency</strong>
+                </h1>
+            </div>
+        </div>
+        <!-- end of title -->
+        <div class="row">
+            <!-- single col -->
+            <div class="col-4 col-sm-4 text-center my-4">
+                <a href="./login.html" class="btn btn-outline-white btn-block bg-white text-uppercase text-dark ">
+                    <i class="fa fa-question-circle fa-3x text-dark" aria-hidden="true"></i>
+                    <h6 class="text-uppercase my-3 ">Ward Info</h6>
+                </a>
+                <a href="#" class="btn btn-outline-white btn-block text-uppercase bg-white text-dark">
+                    <i class="fa fa-question-circle fa-3x text-dark" aria-hidden="true"></i>
+                    <h6 class="text-uppercase my-3">Activties</h6>
+                </a>
+
+            </div>
+            <!-- end of single col -->
+
+            <!-- single col -->
+            <div class="col-4 col-sm-4  text-center my-4">
+                <a href="#" class="btn btn-outline-white btn-block text-uppercase text-dark bg-white ">
+                    <i class="fa fa-question-circle fa-3x text-dark" aria-hidden="true"></i>
+                    <h6 class="text-uppercase my-3">Services</h6>
+                </a>
+                <a href="./faq.html" class="btn btn-outline-white btn-block text-uppercase bg-white text-dark">
+                    <i class="fa fa-question-circle fa-3x text-dark" aria-hidden="true"></i>
+                    <h6 class="text-uppercase my-3">FAQ<small>s</small></h6>
+                </a>
+
+            </div>
+            <!-- end of single col -->
+            <!-- single col -->
+            <div class="col-4 col-sm-4   text-center my-4">
+                <a href="#" class="btn btn-outline-white btn-block text-uppercase bg-white text-dark">
+                    <i class="fa fa-question-circle fa-3x text-primary" aria-hidden="true"></i>
+                    <h6 class="text-uppercase my-3">Programs</h6>
+                </a>
+                <a href="#" class="btn btn-outline-white btn-block text-uppercase bg-white text-dark ">
+                    <i class="fa fa-question-circle fa-3x text-danger" aria-hidden="true"></i>
+                    <h6 class="text-uppercase my-3">Contact Us</h6>
+                </a>
+
+            </div>
+            <!-- end of single col -->
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- end of app section -->
+
+    
+</main>
+
+    <!-- footer section -->
+    
+    <footer id="footer" class="footer">
+        <div class="container">
+            <!-- section-title -->
+            <!-- <div class="row">
+                <div class="col text-center">
+                    <h1 class="display-4 text-uppercase text-white mb-0">
+                        <strong>footer</strong>
+                    </h1>
+                    <div class="title-underline bg-primary">
+                    </div>
+                    <p class="mt-2 text-capitalize text-white">Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div> -->
+            <!-- end of section-title -->
+            <div class="row">
+                <div class="col text-center">
+                    <a href="#" class="btn"><i class="fab fa-facebook fa-3x bg-primary text-dark m-2"></i></a>
+                    <a href="#" class="btn"><i class="fab fa-twitter fa-3x text-primary m-2"></i></a>
+                    <a href="#" class="btn"><i class="fab fa-instagram fa-3x text-primary m-2"></i></a>
+                    <a href="#" class="btn"><i class="fab fa-google-plus fa-3x text-primary m-2"></i></a>
+                </div>
+            </div>
+            <p class="pt-2 pb-0 text-white text-center"><small>Copyright &copy; 2020 ServeYou Hospital. All Right Reserved.</small></p>
+        </div>
+    </footer>
+    <!-- end of footer section -->
+
+</div>
+
+    <!-- JQuery -->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    
+    <script type="text/javascript" src="./js/float2.js"></script>
+
+
+</body>
+
+</html>

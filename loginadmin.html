@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./CSS/login.css">
+    <title>Form Validation</title>
+</head>
+
+<body>
+
+    <div id="error"></div>
+    <form id="form" action="/" method="GET">
+        <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" value="Jake" required>
+        </div>
+        <div>"
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" value ="entering">
+        </div>
+       <button type="button" onclick="validateFormAdmin()" >Login</button>
+       <a href="./faq.html">
+        <button type="button" >Back</button>
+        </a>
+    </form>
+
+
+
+
+
+
+
+
+    <script src="./js/form.js"></script>
+
+</body>
+
+</html>

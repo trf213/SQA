@@ -1,0 +1,189 @@
+/* STYLE.CSS */
+
+html {
+    width: 100%;
+    height: 100%;
+    /* background-color: #DFDFDF; */
+    /* background-color: blue; */
+    
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+@media only screen and (max-width: 992px) {
+body{
+    padding-top: 60px;
+    
+    }
+
+}
+
+
+
+main {
+  flex: 1 0 auto;
+  min-height: auto;
+}
+
+.home{
+      background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ),url("../img/AccidentEmergency.jpg") no-repeat center center fixed;
+    background-size: cover;
+     margin: 0;
+    height: 100%;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.hr{
+    background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ),url("../img/AccidentEmergency.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    /* flex-direction:column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    color: white;
+    border-radius: 0px;
+}
+.bgimg{
+    background: linear-gradient( rgba(0,0,0,0.5), rgba(0,0,0,0.5) ),url("../img/AccidentEmergency.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 8vh;
+    display: flex;
+    /* flex-direction:column; */
+    /* align-items: center; */
+    justify-content:right;
+    color: white;
+    border-radius: 0px;
+}
+
+.foot-icon{
+    color: blueviolet;
+}
+
+
+@media only screen and (max-width: 400px) {
+    #name {
+        text-align: center;
+    }
+  }
+
+.imgheight{
+    height: 400px;
+    width: 100%;
+}
+
+.carousel-item:after {
+  content:"";
+  display:block;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:linear-gradient( rgba(0,0,0.9,0), rgba(0, 0, 0.9, 0.5) );
+}
+
+.navibar{
+    background: #3393FF;
+    font-weight: bolder;
+}
+
+/* @media only screen and (max-width: 992px) {
+    .navibar {
+        background: none;
+        font-weight: bolder;
+    }
+} */
+
+#fixnav{
+    /* background: none; */
+    background: #3393FF;
+    font-weight: bolder;
+}
+
+.infoButton:hover{
+    stroke: #0275d8 ;
+}
+
+
+.height{
+    height: 100vh;
+}
+
+
+
+/* #carousel{
+    min-height: 100vh!important;
+} */
+
+.footer{
+    /* min-height: 100%; */
+    display: flex;
+    position:absolute bottom;
+   /* margin: 0 0 -50 0!important; */
+   /* background: blue; */
+   padding: 0;
+    /* background: blue; */
+   
+  
+}
+
+
+
+.bg-special-1{
+    background-color: #c5dcdc;
+}
+
+.start-img{
+    max-height: 250px;
+}
+
+
+
+.bg-special-2
+{
+    background-color: #D2CBC9;
+}
+
+.bg-special-3
+{
+    background-color: #f5ffff;
+}
+
+.infoButton:hover{
+    stroke: white;
+    fill: black;
+}
+
+.title-underline{
+    width: 200px;
+    height: 10px;
+    margin: 0 auto;
+}
+
+#apps{
+    font-family: 'Arvo', serif;
+
+    /* background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ),url("../img/AE1.jpeg") no-repeat center center fixed;
+    background-size: cover; */
+    /* min-height: 8vh; */
+    display: flex;
+    flex-direction:column; 
+    /* /* align-items: center; */
+    /* background: rgb(235, 243, 243); */
+    
+    border-radius: 0px;
+    /* background:lightsteelblue; */
+
+}
