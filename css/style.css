@@ -1,10 +1,10 @@
 /* STYLE.CSS */
 
+
+/* Allow elenents to use full browser */
 html {
     width: 100%;
     height: 100%;
-    /* background-color: #DFDFDF; */
-    /* background-color: blue; */
     
 }
 
@@ -17,6 +17,8 @@ body{
     
 }
 
+
+/* Prevents fixed navbar from hiding top section of page */
 @media only screen and (max-width: 992px) {
 body{
     padding-top: 60px;
@@ -26,7 +28,7 @@ body{
 }
 
 
-
+/* Allows footer to stick to the bottom of page */
 main {
   flex: 1 0 auto;
   min-height: auto;
@@ -43,35 +45,6 @@ main {
 }
 
 
-
-.hr{
-    background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ),url("../img/AccidentEmergency.jpg") no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    /* flex-direction:column; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    color: white;
-    border-radius: 0px;
-}
-.bgimg{
-    background: linear-gradient( rgba(0,0,0,0.5), rgba(0,0,0,0.5) ),url("../img/AccidentEmergency.jpg") no-repeat center center fixed;
-    background-size: cover;
-    min-height: 8vh;
-    display: flex;
-    /* flex-direction:column; */
-    /* align-items: center; */
-    justify-content:right;
-    color: white;
-    border-radius: 0px;
-}
-
-.foot-icon{
-    color: blueviolet;
-}
-
-
 @media only screen and (max-width: 400px) {
     #name {
         text-align: center;
@@ -79,8 +52,11 @@ main {
   }
 
 .imgheight{
-    height: 400px;
+    height: 350px;
     width: 100%;
+    border: 3px solid greenyellow;
+    /* box-shadow: 0px 0px 0px 10px #888888; */
+   /* border-radius: 20px; */
 }
 
 .carousel-item:after {
@@ -99,16 +75,9 @@ main {
     font-weight: bolder;
 }
 
-/* @media only screen and (max-width: 992px) {
-    .navibar {
-        background: none;
-        font-weight: bolder;
-    }
-} */
 
 #fixnav{
-    /* background: none; */
-    background: #3393FF;
+    background: #3393ff;
     font-weight: bolder;
 }
 
@@ -121,22 +90,10 @@ main {
     height: 100vh;
 }
 
-
-
-/* #carousel{
-    min-height: 100vh!important;
-} */
-
 .footer{
-    /* min-height: 100%; */
     display: flex;
     position:absolute bottom;
-   /* margin: 0 0 -50 0!important; */
-   /* background: blue; */
    padding: 0;
-    /* background: blue; */
-   
-  
 }
 
 
@@ -174,16 +131,7 @@ main {
 
 #apps{
     font-family: 'Arvo', serif;
-
-    /* background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ),url("../img/AE1.jpeg") no-repeat center center fixed;
-    background-size: cover; */
-    /* min-height: 8vh; */
     display: flex;
     flex-direction:column; 
-    /* /* align-items: center; */
-    /* background: rgb(235, 243, 243); */
-    
     border-radius: 0px;
-    /* background:lightsteelblue; */
-
 }
