@@ -1,16 +1,10 @@
-/* Background Styles Only */
 
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-
-* {
-    font-family: Raleway;
-}
-
-html {
+section {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #DFDFDF;
+    background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ),url("../img/AccidentEmergency.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
