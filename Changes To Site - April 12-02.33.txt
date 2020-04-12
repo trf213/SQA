@@ -1,0 +1,18 @@
+---- April 12th, 2020 ----
+
+
+-- 2am --
+
+
+- ALL Login pages are fully functional to test for incorrect username/password
+
+- Valid Login for both login pages (Username/Guest ID: Jake, Password: entering)
+
+-  Added Department/Ward Info
+
+- Other CSS/Design changes (Renamed elements, changed colors, altered/updated Navbar, etc)
+
+- Page to enter Parent and Child's name (security.html) is functional. Enter any name.
+
+
+- Other changes that I probably forgot but you will notice once you browse =)
