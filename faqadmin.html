@@ -85,15 +85,17 @@
 </nav>
 
 <section class="accordbar clearfix mt-3 px-5" aria-label="List Sectons">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-12">
                 <h2>Frequently Asked Questions</h2>
+                <br>
+                <br>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel initial-line">
                         <div class="line-header p-3 mb-3" role="tab" id="line1">
                             <h3 class="line-name">
-                                <a class="collapsed" role="button" title="" data-toggle="collapse"
+                                <a class="collapsed text-dark" role="button" title="" data-toggle="collapse"
                                     data-parent="#accordion" href="#collapse0" aria-expanded="true"
                                     aria-controls="collapse0">
                                     If I am feeling unwell and would like to see a doctor, can I come to Accident and
@@ -115,7 +117,7 @@
                 <div class="panel initial-line">
                     <div class="line-header p-3 mb-3" role="tab" id="line2">
                         <h3 class="line-name">
-                            <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
+                            <a class="collapsed text-dark" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse1" aria-expanded="true" aria-controls="collapse1">
                                 Here’s a list of items you should bring to the AED:
                             </a>
@@ -138,7 +140,7 @@
                 <div class="panel initial-line">
                     <div class="line-header p-3 mb-3" role="tab" id="line3">
                         <h3 class="line-name">
-                            <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
+                            <a class="collapsed text-dark" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse2" aria-expanded="true" aria-controls="collapse2">
                                 Can I be fast tracked?
 
@@ -157,7 +159,7 @@
                 <div class="panel initial-line">
                     <div class="line-header p-3 mb-3" role="tab" id="line4">
                         <h3 class="line-name">
-                            <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
+                            <a class="collapsed text-dark" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse3" aria-expanded="true" aria-controls="collapse3">
                                 How long can I expect to be in the AED?
                             </a>
@@ -185,7 +187,7 @@
 
 
 <section>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col p-5 ml-4">
 
@@ -195,14 +197,16 @@
                         <div class="col-lg mb-md-0">
                 
                             <div class="form-group mb-3">
-                                <label for="question1">Question 1:</label>
-                                <input type="text" name="question1" class="form-control">
+                                <label for="question">Question:</label>
+                                <input type="text" name="question" id="question" class="form-control">
                                     
                             </div>
-                
-                            <div class="form-group mb-3">
-                                <label for="answer1">Answer :</label>
-                                <input type="text" name="answer1" class="form-control">
+                            <div class="form-group mb-3 w-100">
+                                <label for="answer">Answer :</label>
+                                <br>
+                                <textarea class="form-control" name="answer" id="answer" cols="70" rows="5" ></textarea>
+                                <input type="text" name="answer" class="form-control">
+                                
                             </div>
                         </div>
                         <div class="col-sm"></div>
