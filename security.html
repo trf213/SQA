@@ -22,13 +22,16 @@
     <!-- FAQ CSS -->
     <link rel="stylesheet" href="./css/faq.css">
 
+    <link rel="stylesheet" href="./css/login.css">
+
 </head>
 
-<body>
+<body style="padding: 0">
 
 <!-- Non-Fixed Navbar -->
 
     <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block">
+        <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
         <button class="navbar-toggler bg-info" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -38,18 +41,13 @@
         <span id="menu" class="navbar-text d-lg-none text-dark font-weight-bold">MENU</span>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link active" href="./index.html">Home</a>
+                <a class="nav-item nav-link" href="./index.html">Home</a>
+                <a class="nav-item nav-link active" href="./login.html">Department</a>
                 <a class="nav-item nav-link" href="#">Services</a>
                 <a class="nav-item nav-link" href="#">About Us</a>
                 <a class="nav-item nav-link" href="faq.html">FAQs</a>
                 <a class="nav-item nav-link" href="#">Contact Us</a>
             </div>
-            <span class="navbar-text ">
-                <form class="form-inline">
-                    <a href="./loginadmin.html" class="btn btn-outline-light" type="button">
-                        <i class="feather-user"></i> Admin Sign In
-                    </a>
-                </form>
         </div>
 
     </nav>
@@ -58,44 +56,45 @@
 
 
 <section>
-    <div class="container-fluid">
+    <div class="container px-5 text-center text-white ">
         <div class="row">
-            <div class="col p-5">
 
-                <h2 class="h5 mb-3">Please Enter Correct Information Below</h2>
-                <form class="mb-4">
-                    <div class="form-row mb-4">
-                        <div class="col-lg mb-md-0">
+            <div class="col-12 p-5">
+            
+                <h3 class="mb-3 ">Please Enter Correct Information Below</h3>
+            </div>
 
-                            <div class="form-group mb-3">
-                                <label for="gname">Your Name:</label>
-                                <input id="gname" type="text" name="gname" class="form-control" requiired>
 
-                            </div>
+            <div class="col">
 
-                            <div class="form-group mb-3">
-                                <label for="cname">Child's Name :</label>
-                                <input id="cname" type="text" name="cname" class="form-control" required>
-                            </div>
+                <form class="mb-4" id="wardview" action="./ward.html" method="GET">
+                    <div class="form-group row ml-5">
+                        <label for="gname" class="col-sm-2 col-form-label font-weight-bold "></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="gname" placeholder="Your Name" required>
                         </div>
-                        <div class="col-sm"></div>
                     </div>
+                    <div class="form-group row ml-5">
+                        <label for="cname" class="col-sm-2 col-form-label font-weight-bold"></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="cname" placeholder="Child's Name" required>
+                        </div>
+                    </div>
+                    
 
-                    <div class="form-row mt-4"></div>
+                    <div class="col mb-md-0 py-2">
+                    <div class="form-row mt-4">
                         <div class="col">
                             <!-- <button class="btn btn-success ml-2 px-4" onclick="validateFormChild()" type="submit">Submit</button> -->
                             <button class="btn btn-success ml-2 px-4" type="submit">Submit</button>
                             <a href="./index.html" class="btn btn-success ml-2 px-4" type="button"> Cancel</a>
                         </div>
                     </div>
-                </form>
 
+
+                    </form>
             </div>
-
-
-
         </div>
-    </div>
     </div>
 </section>
    

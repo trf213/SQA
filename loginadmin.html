@@ -5,36 +5,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./CSS/login.css">
-    <title>Form Validation</title>
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- font awesome -->
+    <script src="./js/all.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+
+    <link href="./css/feather.css" rel="stylesheet" type="text/css">
+
+    <!-- <!-- Style CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- FAQ CSS -->
+    <link rel="stylesheet" href="./css/faq.css">
+
+    <link rel="stylesheet" href="./css/login.css">
+
 </head>
 
-<body>
+<body style="padding: 0">
 
-    <div id="error"></div>
-    <form id="form" action="/" method="GET">
-        <div>
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" value="Jake" required>
+<!-- Non-Fixed Navbar -->
+
+    <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block">
+        <a class="navbar-brand" href="./index.html">ServeYou Hospital</a>
+        <button class="navbar-toggler bg-info" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <span id="menu" class="navbar-text d-lg-none text-dark font-weight-bold">MENU</span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link active" href="./index.html">Home</a>
+                <a class="nav-item nav-link" href="#">Services</a>
+                <a class="nav-item nav-link" href="#">About Us</a>
+                <a class="nav-item nav-link" href="faq.html">FAQs</a>
+                <a class="nav-item nav-link" href="#">Contact Us</a>
+            </div>
+          
+                </form>
         </div>
-        <div>"
-            <label for="password">Password</label>
-            <input id="password" name="password" type="password" value ="entering">
+
+    </nav>
+
+    
+
+
+<section>
+    <div class="container px-5 text-center text-white ">
+        <div class="row">
+
+            <div class="col-12 p-5">
+            
+                <h3 class="mb-3 ">Please Enter Correct Information Below</h3>
+            </div>
+
+
+            <div class="col">
+
+                <div id="error" class="text-white"></div>
+
+                <form class="mb-4" id="admission" action="./faqadmin.html" method="GET">
+                    <div class="form-group row ml-5">
+                        <label for="gname" class="col-sm-2 col-form-label font-weight-bold "></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Username" required>
+                        </div>
+                    </div>
+                    <div class="form-group row ml-5">
+                        <label for="cname" class="col-sm-2 col-form-label font-weight-bold"></label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col mb-md-0 py-2">
+                    <div class="form-row mt-4">
+                        <div class="col">
+                            <!-- <button class="btn btn-success ml-2 px-4" type="button" onclick="validateInfo()">Login</button> -->
+                            <button class="btn btn-success ml-2 px-4" type="submit">Login</button>
+                            <a href="./index.html" class="btn btn-success ml-2 px-4" type="button"> Back</a>
+                        </div>
+                    </div>
+
+
+                    </form>
+            </div>
         </div>
-       <button type="button" onclick="validateFormAdmin()" >Login</button>
-       <a href="./faq.html">
-        <button type="button" >Back</button>
-        </a>
-    </form>
+    </div>
+</section>
+   
 
 
+<!-- End of Add FAQ -->
 
 
+    <!-- JQuery -->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+
+    <!-- Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
 
 
+    <!-- bootstrap js -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
 
+    <script type="text/javascript" src="./js/form.js"></script>
 
-    <script src="./js/form.js"></script>
 
 </body>
 
