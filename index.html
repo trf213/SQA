@@ -1,260 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <!-- font awesome -->
 
     <!-- <link href="./css/all.css" rel="stylesheet"> -->
     <script defer src="./js/all.js"></script>
 
-    
-
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
-    <link href="./css/feather.css" rel="stylesheet" type="text/css">
+    <link href="./css/feather.css" rel="stylesheet" type="text/css" />
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-</head>
+  <body style="padding: 0;">
+    <div class="home">
+      <!-- Non-Fixed Navbar -->
 
-<body style="padding:0">
+      <nav
+        id="nofixnav"
+        class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block"
+      >
+        <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
+        <button
+          class="navbar-toggler bg-info"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-<div class="home">
-
-   
-<!-- Non-Fixed Navbar -->
-
-<nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block">
-    <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
-    <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <span id="menu" class="navbar-text d-lg-none text-dark font-weight-bold">ServeYou Hospital</span>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto">
+        <span id="menu" class="navbar-text d-lg-none text-dark font-weight-bold"
+          >ServeYou Hospital</span
+        >
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link active" href="#">Home</a>
             <a class="nav-item nav-link" href="./login.html">Department</a>
             <a class="nav-item nav-link" href="#">Services</a>
             <a class="nav-item nav-link" href="#">About Us</a>
             <a class="nav-item nav-link" href="./faq.html">FAQs</a>
             <a class="nav-item nav-link" href="#">Contact Us</a>
+          </div>
         </div>
-        
-    </div>
+      </nav>
 
-</nav>
+      <!-- Fixed Navbar -->
 
-<!-- Fixed Navbar -->
+      <nav
+        id="fixnav"
+        class="navbar navbar-expand-lg navbar-dark navibar fixed-top d-none"
+      >
+        <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
+        <button
+          class="navbar-toggler bg-info"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-<nav id="fixnav" class="navbar navbar-expand-lg navbar-dark navibar fixed-top d-none">
-    <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
-    <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- <span id="menu" class="navbar-text d-lg-none text-light font-weight-bold">MENU</span> -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto">
+        <!-- <span id="menu" class="navbar-text d-lg-none text-light font-weight-bold">MENU</span> -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link active" href="./index.html">Home</a>
             <a class="nav-item nav-link" href="./login.html">Department</a>
             <a class="nav-item nav-link" href="#">Services</a>
             <a class="nav-item nav-link" href="#">About Us</a>
             <a class="nav-item nav-link" href="./faq.html">FAQs</a>
             <a class="nav-item nav-link" href="#">Contact Us</a>
+          </div>
         </div>
-    </div>
+      </nav>
 
-</nav>
+      <main>
+        <!-- header -->
 
-
-<main>
-<!-- header -->
-
-<header id="carousel" class="p-0  text-white">
-    <div class="container-fluid d-none d-lg-block">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                
+        <header id="carousel" class="p-0 text-white">
+          <div class="container-fluid d-none d-lg-block">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
                 <!-- <p class="lead text-center">
                                         <a class="btn btn-primary btn-lg m-auto" href="signup.html" role="button">Register</a>
                                     </p> -->
-            </div>
-            <div class="col-md-12 p-0 mx-auto text-center">
-                <div id="example" class="carousel slide" data-ride="carousel">
-                    <!-- indicators -->
-                    <ul class="carousel-indicators">
-                        <li data-target="#example" data-slide-to="0" class="active"></li>
-                        <li data-target="#example" data-slide-to="1"></li>
-                        <li data-target="#example" data-slide-to="2"></li>
-                        <li data-target="#example" data-slide-to="3"></li>
-                    </ul>
-                    <!-- images -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <a href="#">
-                                <img src="./img/Doctors1.jpeg" alt="Accident" class="imgheight d-block w-100">
-                            </a>
-                            <div class="carousel-caption trickcenter">
-                                <div>
-                                    <h2>Services</h2>Click Here
-                                </div>
-                            </div>
+              </div>
+              <div class="col-md-12 p-0 mx-auto text-center">
+                <div id="aephotos" class="carousel slide" data-ride="carousel">
+                  <!-- indicators -->
+                  <ul class="carousel-indicators">
+                    <li
+                      data-target="#aephotos"
+                      data-slide-to="0"
+                      class="active"
+                    ></li>
+                    <li data-target="#aephotos" data-slide-to="1"></li>
+                    <li data-target="#aephotos" data-slide-to="2"></li>
+                    <li data-target="#aephotos" data-slide-to="3"></li>
+                    <li data-target="#aephotos" data-slide-to="4"></li>
+                    <li data-target="#aephotos" data-slide-to="5"></li>
+                    <li data-target="#aephotos" data-slide-to="6"></li>
+                  </ul>
+                  <!-- images -->
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <a href="#">
+                        <img
+                          src="./img/AESign.jpeg"
+                          alt="Accident"
+                          class="imgheight d-block w-100"
+                        />
+                      </a>
+                      <div class="carousel-caption trickcenter">
+                        <div>
+                          <h2>
+                            Welcome To The New Accident & Emergency(AED) Website
+                          </h2>
                         </div>
-                        <div class="carousel-item">
-                            <a href="./faq.html">
-                                <img src="./img/AE2.jpeg" alt="Accident" class="imgheight d-block w-100">
-                            
-                            <div class="carousel-caption trickcenter">
-                                <div>
-                                    <h2>FAQs</h2>Click Here
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="./login.html">
-                                <img src="./img/AE3.jpeg" alt="Accident" class="imgheight d-block w-100">
-                            
-                            <div class="carousel-caption trickcenter">
-                                <div>
-                                    <h2>Ward Info</h2>Click Here
-                                </div>
-                            </div>
-                            </a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="./login.html">
-                                <img src="./img/AE1.jpeg" alt="Accident" class="imgheight d-block w-100">
-                            <div class="carousel-caption trickcenter">
-                                <div>
-                                    <h2>Guest Sign In</h2>Click Here
-                                </div>
-                            </div>
-                            </a>
-                        </div>
+                      </div>
                     </div>
-                    <!-- end of images -->
-                    <!-- controls -->
+                    <div class="carousel-item">
+                      <a href="./login.html">
+                        <img
+                          src="./img/Ward.jpg"
+                          alt="Accident"
+                          class="imgheight d-block w-100"
+                        />
 
-                    <a href="#example" class="carousel-control-prev" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a href="#example" class="carousel-control-next" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
+                        <div class="carousel-caption trickcenter">
+                          <div>
+                            <h2>Ward Info</h2>
+                            Click Here
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="carousel-item">
+                      <a href="#">
+                        <img
+                          src="./img/Doctors1.jpg"
+                          alt="Accident"
+                          class="imgheight d-block w-100"
+                        />
+                        <div class="carousel-caption trickcenter">
+                          <div>
+                            <h2>Services</h2>
+                            Click Here
+                          </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                      <a href="#">
+                        <img
+                          src="./img/Ward2.jpg"
+                          alt="Accident"
+                          class="imgheight d-block w-100"
+                        />
+                        <div class="carousel-caption trickcenter">
+                          <div>
+                            <h2>Visitors</h2>
+                            Click Here
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="carousel-item">
+                      <a href="./login.html">
+                        <img
+                          src="./img/News.jpeg"
+                          alt="Accident"
+                          class="imgheight d-block w-100"
+                        />
+                        <div class="carousel-caption trickcenter">
+                          <div>
+                            <h2>News</h2>
+                            Click Here
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="carousel-item">
+                      <a href="./faq.html">
+                        <img
+                          src="./img/FAQ.jpg"
+                          alt="Accident"
+                          class="imgheight d-block w-100"
+                        />
 
-                    <!-- end of controls -->
+                        <div class="carousel-caption trickcenter">
+                          <div>
+                            <h2>FAQs</h2>
+                            Click Here
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="carousel-item">
+                      <a href="./faq.html">
+                        <img
+                          src="./img/Call.jpg"
+                          alt="Accident"
+                          class="imgheight d-block w-100"
+                        />
 
+                        <div class="carousel-caption trickcenter">
+                          <div>
+                            <h2>Contact Us</h2>
+                            Click Here
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- end of images -->
+                  <!-- controls -->
+
+                  <a
+                    href="#aephotos"
+                    class="carousel-control-prev"
+                    data-slide="prev"
+                  >
+                    <span class="carousel-control-prev-icon"></span>
+                  </a>
+                  <a
+                    href="#aephotos"
+                    class="carousel-control-next"
+                    data-slide="next"
+                  >
+                    <span class="carousel-control-next-icon"></span>
+                  </a>
+
+                  <!-- end of controls -->
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-</header>
-<!-- end of header -->
-<!-- header -->
+          </div>
+        </header>
+        <!-- end of header -->
+        <!-- header -->
 
-<!-- app for big screen section -->
+        <!-- app for big screen section -->
 
-<section id="welcome" class="d-none d-lg-block">
-    <div class="container text-white pt-3 bg">
-        <div class="row">
-            <div class="col">
-                <h1 class="display-4 text-center bg-primary py-2">Welcome To Accident & Emergency (AED)</h1>
-                <br><br>
-                <p class="lead text-center">Lorem ipsum dolor sit amet consectetur adipisicing </p>
-                <hr class="my-4 text-center">
-                <p class="text-center"> Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- end of app for big screen section -->
-
-
-<!-- app section -->
-
-<section id="apps" class="py-5  d-lg-none">
-    <div class="container">
-        <!-- title -->
-        <div class="row">
-            <div class="col text-center">
-                <h1 class="display-4 text-uppercase text-dark bg-warning mb-0">
-                    <strong>Accident & Emergency</strong>
+        <section id="welcome" class="d-none d-lg-block">
+          <div class="container text-white pt-3 bg">
+            <div class="row">
+              <div class="col">
+                <h1 class="display-4 text-center bg-primary py-2">
+                  Welcome To Accident & Emergency (AED)
                 </h1>
+                <br /><br />
+                <p class="lead text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing
+                </p>
+                <hr class="my-4 text-center" />
+                <p class="text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing.
+                </p>
+              </div>
             </div>
-        </div>
-        <!-- end of title -->
-        <div class="row">
-            <!-- single col -->
-            <div class="col-4 col-sm-4 text-center my-4">
-                <a href="./login.html" class="btn btn-outline-white btn-block bg-white text-uppercase text-dark ">
-                    <i class="fa fa-question-circle fa-3x text-dark" aria-hidden="true"></i>
-                    <h6 class="text-uppercase my-3 ">Ward Info</h6>
-                </a>
-                <a href="#" class="btn btn-outline-white btn-block text-uppercase bg-white text-dark">
-                    <i class="fa fa-question-circle fa-3x text-dark" aria-hidden="true"></i>
-                    <h6 class="text-uppercase my-3">Activties</h6>
-                </a>
+          </div>
+        </section>
 
+        <!-- end of app for big screen section -->
+
+        <!-- app section -->
+
+        <section id="apps" class="py-5 d-lg-none">
+          <div class="container">
+            <!-- title -->
+            <div class="row">
+              <div class="col text-center">
+                <h1 class="display-4 text-uppercase text-dark bg-warning mb-0">
+                  <strong>Accident & Emergency</strong>
+                </h1>
+              </div>
             </div>
-            <!-- end of single col -->
-
-            <!-- single col -->
-            <div class="col-4 col-sm-4  text-center my-4">
-                <a href="#" class="btn btn-outline-white btn-block text-uppercase text-dark bg-white ">
-                    <i class="fa fa-question-circle fa-3x text-dark" aria-hidden="true"></i>
-                    <h6 class="text-uppercase my-3">Services</h6>
+            <!-- end of title -->
+            <div class="row">
+              <!-- single col -->
+              <div class="col-4 col-sm-4 text-center my-4">
+                <a
+                  href="./login.html"
+                  class="btn btn-outline-white btn-block bg-white text-uppercase text-dark"
+                >
+                  <i
+                    class="fa fa-question-circle fa-3x text-dark"
+                    aria-hidden="true"
+                  ></i>
+                  <h6 class="text-uppercase my-3">Ward Info</h6>
                 </a>
-                <a href="./faq.html" class="btn btn-outline-white btn-block text-uppercase bg-white text-dark">
-                    <i class="fa fa-question-circle fa-3x text-dark" aria-hidden="true"></i>
-                    <h6 class="text-uppercase my-3">FAQ<small>s</small></h6>
+                <a
+                  href="#"
+                  class="btn btn-outline-white btn-block text-uppercase bg-white text-dark"
+                >
+                  <i
+                    class="fa fa-question-circle fa-3x text-dark"
+                    aria-hidden="true"
+                  ></i>
+                  <h6 class="text-uppercase my-3">News</h6>
                 </a>
+              </div>
+              <!-- end of single col -->
 
+              <!-- single col -->
+              <div class="col-4 col-sm-4 text-center my-4">
+                <a
+                  href="#"
+                  class="btn btn-outline-white btn-block text-uppercase text-dark bg-white"
+                >
+                  <i
+                    class="fa fa-question-circle fa-3x text-dark"
+                    aria-hidden="true"
+                  ></i>
+                  <h6 class="text-uppercase my-3">Services</h6>
+                </a>
+                <a
+                  href="./faq.html"
+                  class="btn btn-outline-white btn-block text-uppercase bg-white text-dark"
+                >
+                  <i
+                    class="fa fa-question-circle fa-3x text-dark"
+                    aria-hidden="true"
+                  ></i>
+                  <h6 class="text-uppercase my-3">FAQ<small>s</small></h6>
+                </a>
+              </div>
+              <!-- end of single col -->
+              <!-- single col -->
+              <div class="col-4 col-sm-4 text-center my-4">
+                <a
+                  href="#"
+                  class="btn btn-outline-white btn-block text-uppercase bg-white text-dark"
+                >
+                  <i
+                    class="fa fa-question-circle fa-3x text-primary"
+                    aria-hidden="true"
+                  ></i>
+                  <h6 class="text-uppercase my-3">Visitors</h6>
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-outline-white btn-block text-uppercase bg-white text-dark"
+                >
+                  <i
+                    class="fa fa-question-circle fa-3x text-danger"
+                    aria-hidden="true"
+                  ></i>
+                  <h6 class="text-uppercase my-3">Contact Us</h6>
+                </a>
+              </div>
+              <!-- end of single col -->
             </div>
-            <!-- end of single col -->
-            <!-- single col -->
-            <div class="col-4 col-sm-4   text-center my-4">
-                <a href="#" class="btn btn-outline-white btn-block text-uppercase bg-white text-dark">
-                    <i class="fa fa-question-circle fa-3x text-primary" aria-hidden="true"></i>
-                    <h6 class="text-uppercase my-3">Programs</h6>
-                </a>
-                <a href="#" class="btn btn-outline-white btn-block text-uppercase bg-white text-dark ">
-                    <i class="fa fa-question-circle fa-3x text-danger" aria-hidden="true"></i>
-                    <h6 class="text-uppercase my-3">Contact Us</h6>
-                </a>
+          </div>
+        </section>
 
-            </div>
-            <!-- end of single col -->
+        <!-- end of app section -->
+      </main>
 
-        </div>
-    </div>
-</section>
+      <!-- footer section -->
 
-
-
-<!-- end of app section -->
-
-    
-</main>
-
-    <!-- footer section -->
-    
-    <footer id="footer" class="footer home">
+      <footer id="footer" class="footer home">
         <div class="container">
-            <!-- section-title -->
-            <!-- <div class="row">
+          <!-- section-title -->
+          <!-- <div class="row">
                 <div class="col text-center">
                     <h1 class="display-4 text-uppercase text-white mb-0">
                         <strong>footer</strong>
@@ -264,30 +391,39 @@
                     <p class="mt-2 text-capitalize text-white">Lorem ipsum dolor sit amet.</p>
                 </div>
             </div> -->
-            <!-- end of section-title -->
-            <div class="row">
-                <div class="col text-center">
-                    <a href="#" class="btn"><i class="fab fa-facebook fa-3x bg-primary text-dark m-2"></i></a>
-                    <a href="#" class="btn"><i class="fab fa-twitter fa-3x text-primary m-2"></i></a>
-                    <a href="#" class="btn"><i class="fab fa-instagram fa-3x text-primary m-2"></i></a>
-                    <a href="#" class="btn"><i class="fab fa-google-plus fa-3x text-primary m-2"></i></a>
-                </div>
+          <!-- end of section-title -->
+          <div class="row">
+            <div class="col text-center">
+              <a href="#" class="btn"
+                ><i class="fab fa-facebook fa-3x bg-primary text-dark m-2"></i
+              ></a>
+              <a href="#" class="btn"
+                ><i class="fab fa-twitter fa-3x text-primary m-2"></i
+              ></a>
+              <a href="#" class="btn"
+                ><i class="fab fa-instagram fa-3x text-primary m-2"></i
+              ></a>
+              <a href="#" class="btn"
+                ><i class="fab fa-google-plus fa-3x text-primary m-2"></i
+              ></a>
             </div>
-            <p class="pt-2 pb-0 text-white text-center"><small>Copyright &copy; 2020 ServeYou Hospital. All Right Reserved.</small></p>
+          </div>
+          <p class="pt-2 pb-0 text-white text-center">
+            <small
+              >Copyright &copy; 2020 ServeYou Hospital. All Right
+              Reserved.</small
+            >
+          </p>
         </div>
-    </footer>
-    <!-- end of footer section -->
-
-</div>
+      </footer>
+      <!-- end of footer section -->
+    </div>
 
     <!-- JQuery -->
     <script src="./js/jquery-3.4.1.min.js"></script>
     <!-- bootstrap js -->
     <script src="./js/bootstrap.bundle.min.js"></script>
-    
+
     <script type="text/javascript" src="./js/float2.js"></script>
-
-
-</body>
-
+  </body>
 </html>
