@@ -16,3 +16,11 @@
 
 
 - Other changes that I probably forgot but you will notice once you browse =)
+
+---- April 13th, 2020 ----
+
+
+-- 10am --
+
+- Node.js has been Added
+- Required packages Nodejs, npm , express, nodemon
