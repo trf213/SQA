@@ -4,20 +4,20 @@ var path = require('path');
 
 const port = process.env.PORT || 3000; 
 
-console.log("port");
+console.log(port);
 app.use('/css', express.static('./css'))
 app.use('/img', express.static('./img'))
 app.use('/js', express.static('./js'))
 app.use('/webfonts', express.static('./webfonts'))
 
-//index route 
+// Index Routes
 app.get('/',function(req,res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 } );
 app.get('/index.html',function(req,res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 } );
-//index route 
+
 app.get('/login.html',function(req,res) {
     res.sendFile(path.join(__dirname + '/login.html'));
 } );
