@@ -1,4 +1,4 @@
-/* STYLE.CSS */
+/* CSS Styles For All Pages*/
 
 
 /* Allow elenents to use full browser */
@@ -34,6 +34,7 @@ main {
   min-height: auto;
 }
 
+/* Used for background image */
 .home{
       background: linear-gradient( rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ),url("../img/AccidentEmergency.jpg") no-repeat center center fixed;
     background-size: cover;
@@ -44,20 +45,14 @@ main {
     flex-direction: column;
 }
 
-
-@media only screen and (max-width: 400px) {
-    #name {
-        text-align: center;
-    }
-  }
-
+/* Controls scaling of photos in the carousel */
 .imgheight{
     height: 350px;
     width: 100%;
     border: 3px solid greenyellow;
-    /* box-shadow: 0px 0px 0px 10px #888888; */
-   /* border-radius: 20px; */
 }
+
+/* Used to darken carousel photos */
 
 .carousel-item:after {
   content:"";
@@ -70,65 +65,26 @@ main {
   background:linear-gradient( rgba(0,0,0.9,0), rgba(0, 0, 0.9, 0.5) );
 }
 
+/* Styling navbar */
 .navibar{
     background: #3393FF;
     font-weight: bolder;
 }
 
-
+/* Styling fixed navbar */
 #fixnav{
     background: #3393ff;
     font-weight: bolder;
 }
 
-.infoButton:hover{
-    stroke: #0275d8 ;
-}
-
-
-.height{
-    height: 100vh;
-}
-
+/* Also keeps footer stuck to bottom */
 .footer{
     display: flex;
     position:absolute bottom;
-   padding: 0;
+    padding: 0;
 }
 
-
-
-.bg-special-1{
-    background-color: #c5dcdc;
-}
-
-.start-img{
-    max-height: 250px;
-}
-
-
-
-.bg-special-2
-{
-    background-color: #D2CBC9;
-}
-
-.bg-special-3
-{
-    background-color: #f5ffff;
-}
-
-.infoButton:hover{
-    stroke: white;
-    fill: black;
-}
-
-.title-underline{
-    width: 200px;
-    height: 10px;
-    margin: 0 auto;
-}
-
+/* Used to style the apps sections of index page */
 #apps{
     font-family: 'Arvo', serif;
     display: flex;
