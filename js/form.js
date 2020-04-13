@@ -45,22 +45,5 @@ admission.addEventListener('submit', (e) => {
 })
 
 
-function validateInfo() {
-
-  if (name.value === "Jake" && password.value === "entering") {
-    window.location.href = "./security.html";
-  }
-
-
-}
-function validateFormAdmin() {
-
-  if (name.value === "Jake" && password.value === "entering") {
-    window.location.href = "./faqadmin.html";
-  }
-
-
-}
-
 
 
