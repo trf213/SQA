@@ -41,45 +41,32 @@
     
 
 
-<section>
-    <div class="container px-5 text-center text-white ">
-        <div class="row">
-
-            <div class="col-12 p-5">
-            
-                <h3 class="mb-3 ">Please Enter Correct Information Below</h3>
+<section class="text-center">
+    <div class="container text-white">
+        <h2>Please Enter Your Information</h2>
+        <br><br>
+        <div id="error" class=" col-12 text-white"></div>
+        <br>
+        <form class="form-horizontal" id="fam-names" action="./home.html" method="GET">
+            <div class="form-group d-flex justify-content-center">
+                <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+                    <input type="text" class="form-control" id="gname" placeholder="Your Name" name="gname" required>
+                </div>
             </div>
-
-
-            <div class="col">
-
-                <form class="mb-4" id="wardview" action="./home.html" method="GET">
-                    <div class="form-group row ml-5">
-                        <label for="gname" class="col-sm-2 col-form-label font-weight-bold "></label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="gname" placeholder="Your Name" required>
-                        </div>
-                    </div>
-                    <div class="form-group row ml-5">
-                        <label for="cname" class="col-sm-2 col-form-label font-weight-bold"></label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="cname" placeholder="Child's Name" required>
-                        </div>
-                    </div>
-                    
-
-                    <div class="col mb-md-0 py-2">
-                    <div class="form-row mt-4">
-                        <div class="col">
-                            <button class="btn btn-success ml-2 px-4" type="submit">Submit</button>
-                            <a href="./index.html" class="btn btn-success ml-2 px-4" type="button"> Cancel</a>
-                        </div>
-                    </div>
-
-
-                    </form>
+            <div class="form-group d-flex justify-content-center">
+                <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+                    <input type="text" class="form-control" id="cname" placeholder="Child's Name" name="cname"
+                        required>
+                </div>
             </div>
-        </div>
+            <br>
+            <div class="form-group">
+                <div class=" col-sm-12">
+                    <button type="submit" class="btn btn-success mr-3 px-4">Submit</button>
+                    <a href="./index.html" type="button" class="btn btn-success px-4">Cancel</a>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
    

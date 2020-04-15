@@ -43,47 +43,38 @@
     
 
 
-<section>
-    <div class="container px-5 text-center text-white">
-        <div class="row">
-
-            <div class="col-12 p-5">
-            
-                <h3 class="mb-3 ">Please Enter Admin Login Information Below</h3>
+<section class="text-center">
+    <div class="container text-white">
+        <h2>Please Enter Login Information</h2>
+        <br><br>
+        <div id="error" class=" col-12 text-white"></div>
+        <br>
+        <form class="form-horizontal" id="admission" action="./homeadmin.html" method="GET">
+            <div class="form-group d-flex justify-content-center">
+                <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+                    <input type="text" class="form-control" id="name" placeholder="Staff Name" name="name" required>
+                </div>
             </div>
-
-
-            <div class="col">
-
-                <div id="error" class="text-white"></div>
-
-                <form class="mb-4" id="admission" action="./homeadmin.html" method="GET">
-                    <div class="form-group row ml-5">
-                        <label for="gname" class="col-sm-2 col-form-label font-weight-bold "></label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Staff Name" required>
-                        </div>
-                    </div>
-                    <div class="form-group row ml-5">
-                        <label for="cname" class="col-sm-2 col-form-label font-weight-bold"></label>
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control" id="password" placeholder="Password" required>
-                        </div>
-                    </div>
-                    
-
-                    <div class="col mb-md-0 py-2">
-                    <div class="form-row mt-4">
-                        <div class="col">
-                            <button class="btn btn-success ml-2 px-4" type="submit">Login</button>
-                            <a href="./index.html" class="btn btn-success ml-2 px-4" type="button"> Back</a>
-                        </div>
-                    </div>
-
-
-                    </form>
+            <div class="form-group d-flex justify-content-center">
+                <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+                        required>
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <div class="col-10 col-lg-11">
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="remember"> Remember me</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class=" col-sm-12">
+                    <button type="submit" class="btn btn-success mr-3 px-4">Login</button>
+                    <a href="./index.html" type="button" class="btn btn-success px-4">Back</a>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
    
