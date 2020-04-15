@@ -92,14 +92,43 @@ main {
 
 /* Styling navbar */
 .navibar{
-    background: #3393FF;
+    background: #3363ff;
     font-weight: bolder;
+}
+
+.blacknavbar{
+    background: rgba(0,0,0,0.3);
 }
 
 /* Styling fixed navbar */
 #fixnav{
-    background: #3393ff;
+    background: #3363ff;
     font-weight: bolder;
+}
+
+.navbar .navbar-nav a{
+    color: white !important;
+}
+.navbar .navbar-nav a:hover{
+    background-color: rgba(0,0,0,0.2) !important;
+}
+
+.navbar .navbar-nav .active {
+    color: rgba(255,255,255,0.6) !important;
+}
+
+.blacknavbar .navbar-nav a:hover {
+    color: rgba(54, 211, 124, 0.527) !important;
+}
+
+.logbutton{
+    color: rgba(0,0,0,0.5) !important;
+    font-weight: bold !important;
+    background-color: rgba(255,255,255,0.7) !important;
+}
+
+#togglebutton{
+    background-color:rgba(117, 108, 108, 0.6) !important;
 }
 
 /* Also keeps footer stuck to bottom */
