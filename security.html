@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Questions</title>
+    <title>Guest Login Questions - ServeYou Hospital</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <!-- font awesome -->
-    <script src="./js/all.js"></script>
+    <script defer src="./js/all.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
@@ -24,31 +24,28 @@
 
     <link rel="stylesheet" href="./css/login.css">
 
+
+
+
 </head>
 
 <body class="home login">
 
 <!-- Non-Fixed Navbar -->
 
-    <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block align-nav">
-        <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
-        <button class="navbar-toggler bg-info" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block align-nav blacknavbar">
+        <div class="d-flex justify-content-between">
+        <a class="navbar-brand " href="./index.html"> ServeYou Hospital</a>
+        
 
-        <span id="menu" class="navbar-text d-lg-none text-dark font-weight-bold">MENU</span>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="./index.html">Home</a>
-                <a class="nav-item nav-link active" href="./security.html">Wards</a>
-                <a class="nav-item nav-link" href="#">Services</a>
-                <a class="nav-item nav-link" href="#">Visitors</a>
-                <a class="nav-item nav-link" href="#">News</a>
-                <a class="nav-item nav-link" href="faq.html">FAQs</a>
-                <a class="nav-item nav-link" href="#">Contact Us</a>
-            </div>
+            <span class="navbar-text">
+                <form class="form-inline">
+                    <a href="./loginadmin.html" class="btn btn-info text-white font-weight-bold" type="button">
+                        <i class="far fa-user"></i> Admin Login
+                    </a>
+                </form>
+            </span>
+        </div>
         </div>
 
     </nav>

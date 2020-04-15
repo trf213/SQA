@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Welcome - ServeYou Hospital</title>
+    <title>Home Page - ServeYou Hospital</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <!-- font awesome -->
@@ -29,39 +29,36 @@
 
       <!-- Non-Fixed Navbar -->
 
-      <nav
-        id="nofixnav"
-        class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block"
-      >
-        <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
-        <button
-          class="navbar-toggler bg-info"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <span id="menu" class="navbar-text d-lg-none text-dark font-weight-bold"
-          >ServeYou Hospital</span
-        >
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link active" href="#">Home</a>
-            <a class="nav-item nav-link" href="./login.html">Wards</a>
-            <a class="nav-item nav-link" href="#">Services</a>
-            <a class="nav-item nav-link" href="#">Visitors</a>
-            <a class="nav-item nav-link" href="#">News</a>
-            <a class="nav-item nav-link" href="./faq.html">FAQs</a>
-            <a class="nav-item nav-link" href="#">Contact Us</a>
+        <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block blacknavbar">
+          <div class="d-flex justify-content-between">
+            <a class="navbar-brand" href="./homeadmin.html"> ServeYou Hospital</a>
+            <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link active" href="#">Home</a>
+                <a class="nav-item nav-link" href="./wardadmin.html">Wards</a>
+                <a class="nav-item nav-link" href="#">Services</a>
+                <a class="nav-item nav-link" href="#">Visitors</a>
+                <a class="nav-item nav-link" href="#">News</a>
+                <a class="nav-item nav-link" href="./faqadmin.html">FAQs</a>
+                <a class="nav-item nav-link" href="#">Contact Us</a>
+              </div>
+        
+              <span class="navbar-text">
+                <form class="form-inline">
+                  <a href="./index.html" class="btn logbutton font-weight-bold" type="button">
+                    <i class="far fa-user"></i> Log Out
+                  </a>
+                </form>
+              </span>
+            </div>
+        
           </div>
-        </div>
-      </nav>
-
+        </nav>
 
       <main>
         <!-- header -->
@@ -109,7 +106,7 @@
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <a href="./login.html">
+                      <a href="./wardadmin.html">
                         <img
                           src="./img/Ward.jpg"
                           alt="Accident"
@@ -170,7 +167,7 @@
                       </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="./faq.html">
+                      <a href="./faqadmin.html">
                         <img
                           src="./img/FAQ.jpg"
                           alt="Accident"
@@ -270,7 +267,7 @@
               <!-- first col -->
               <div class="col-12 col-sm-4 text-center my-4">
                 <a
-                  href="./login.html"
+                  href="./ward.html"
                   class="btn btn-outline-white btn-block bg-white text-uppercase text-dark mb-5"
                 >
                   <i
@@ -305,7 +302,7 @@
                   <h6 class="text-uppercase my-3">Services</h6>
                 </a>
                 <a
-                  href="./faq.html"
+                  href="./faqadmin.html"
                   class="btn btn-outline-white btn-block text-uppercase bg-white text-dark"
                 >
                   <i

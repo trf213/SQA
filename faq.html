@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>FAQ</title>
+    <title>FAQs - ServeYou Hospital</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     
@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-    <!-- <script defer src="./js/all.js"></script> -->
+    <script defer src="./js/all.js"></script>
     <!-- <link href="./css/all.css" rel="stylesheet"> -->
 
     
@@ -37,9 +37,10 @@
 
 <!-- Non-Fixed Navbar -->
 
-    <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block">
-        <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
-        <button class="navbar-toggler bg-info" type="button" data-toggle="collapse"
+<nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block">
+    <div class="d-flex justify-content-between">
+        <a class="navbar-brand" href="./home.html"> ServeYou Hospital</a>
+        <button id="togglebutton" class="navbar-toggler bg-info" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,8 +48,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="./index.html">Home</a>
-                <a class="nav-item nav-link" href="./login.html">Wards</a>
+                <a class="nav-item nav-link" href="./home.html">Home</a>
+                <a class="nav-item nav-link" href="./ward.html">Wards</a>
                 <a class="nav-item nav-link" href="#">Services</a>
                 <a class="nav-item nav-link" href="#">Visitors</a>
                 <a class="nav-item nav-link" href="#">News</a>
@@ -57,27 +58,29 @@
             </div>
             <span class="navbar-text ">
                 <form class="form-inline">
-                    <a href="./loginadmin.html" class="btn btn-outline-light" type="button">
-                        <i class="feather-user"></i> Admin Sign In
+                    <a href="./index.html" class="btn logbutton" type="button">
+                        <i class="far fa-user"></i> Log Out
                     </a>
                 </form>
+            </span>
         </div>
+    </div>
+</nav>
 
-    </nav>
+<!-- Fixed Navbar -->
 
-    <!-- Fixed Navbar -->
-   
 <nav id="fixnav" class="navbar navbar-expand-lg navbar-dark navibar fixed-top d-lg-none">
-    <a class="navbar-brand" href="./index.html"> ServeYou Hospital</a>
-    <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="./home.html"> ServeYou Hospital</a>
+    <button id="togglebutton" class="navbar-toggler " type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="./index.html">Home</a>
-            <a class="nav-item nav-link" href="./login.html">Wards</a>
+            <a class="nav-item nav-link" href="./home.html">Home</a>
+            <a class="nav-item nav-link" href="./ward.html">Wards</a>
             <a class="nav-item nav-link" href="#">Services</a>
             <a class="nav-item nav-link" href="#">Visitors</a>
             <a class="nav-item nav-link" href="#">News</a>
@@ -86,21 +89,19 @@
         </div>
         <span class="navbar-text ">
             <form class="form-inline">
-                <a href="./loginadmin.html" class="btn btn-outline-light" type="button">
-                    <i class="feather-user"></i> Admin Sign In
-                </a>
+                <a href="./index.html" class="btn logbutton" type="button">
+                    <i class="far fa-user"></i> Log Out</a>
             </form>
-            </span>
+        </span>
     </div>
-
 </nav>
 
 
-<section class="accordbar clearfix mt-3 px-5" aria-label="List Sectons">
+<section class="accordbar clearfix mt-3 px-5 pt-2" aria-label="List Sectons">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2>Frequently Asked Questions</h2>
+                <h2 class="text-uppercase font-weight-bold">Frequently Asked Questions</h2>
                 <br><br>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel initial-line">
@@ -196,16 +197,16 @@
 <hr />
 <!-- Add FAQ -->
 
+<!-- Mobile Log Out Section -->
+
 <section>
-    <div class="container-fluid">
+    <div class="container d-lg-none">
         <div class="row">
             <div class="col px-5 pb-5 text-center">
-
-                <h5 class=" mb-3">Admin Log In Below</h5>
                 
                     <div class="form-row mt-4"></div>
                         <div class="col">
-                            <a href="./loginadmin.html" class="btn btn-success ml-2 px-4" type="submit">Log In</a>
+                            <a href="./index.html" class="btn btn-success ml-2 px-4" type="submit">Log Out</a>
                         </div>
 
             </div>
@@ -215,7 +216,7 @@
    
 
 
-<!-- End of Add FAQ -->
+<!-- End of Mobile Log Out Section -->
 
 
     </div>
