@@ -5,19 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Guest Login Questions - ServeYou Hospital</title>
+    <title>Guest Login - ServeYou Hospital</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./public/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- font awesome -->
-    <script defer src="/all.js"></script>
-
-
-    <!-- <!-- Style CSS -->
-    <link rel="stylesheet" href="./public/css/style.css">
-
-
+    <script src="/all.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet"/>
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body class="home login">
@@ -26,7 +23,7 @@
 
 <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block align-nav blacknavbar">
     <div class="d-flex justify-content-between">
-    <a class="navbar-brand " href="/"> ServeYou Hospital</a>
+        <a class="navbar-brand " href="/"> ServeYou Hospital</a>
 
         <span class="navbar-text">
             <form class="form-inline">
@@ -38,7 +35,6 @@
     </div>
 </nav>
 
-    
 
 
 <section class="text-center">
@@ -47,7 +43,7 @@
         <br><br>
         <div id="error" class=" col-12 text-white"></div>
         <br>
-        <form class="form-horizontal" id="fam-names" action="./home.html" method="GET">
+        <form class="form-horizontal" id="fam-names" action="/login/security" method="POST">
             <div class="form-group d-flex justify-content-center">
                 <div class="col-6 col-md-5 col-lg-4 col-xl-3">
                     <input type="text" class="form-control" id="gname" placeholder="Your Name" name="gname" required>
@@ -71,26 +67,14 @@
 </section>
    
 
-
-<!-- End of Add FAQ -->
-
-
     <!-- JQuery -->
-    <script src="/jquery-3.4.1.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <!-- Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-
-
-    <!-- Bootstrap js -->
-    <script src="/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Form js -->
     <script type="text/javascript" src="/form.js"></script>
-
-
 </body>
-
 </html>
+

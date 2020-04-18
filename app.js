@@ -8,6 +8,7 @@ const loginRoutes = require('./routes/login');
 const app = express();
 const port = process.env.PORT || 3000;
 
+
 app.use(express.static(path.join(rootDir, 'public')));
 app.use(express.static(path.join(rootDir, 'webfonts')));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -25,6 +26,10 @@ app.get('/index',function(req,res) {
 app.get('/home',function(req,res) {
   res.sendFile(path.join(rootDir, 'home.html'));
 });
+
+app.get('/homeadmin',function(req,res) {
+    res.sendFile(path.join(rootDir, 'homeadmin.html'));
+  });
 
 app.get('/faq',function(req,res) {
     res.sendFile(path.join(rootDir, 'faq.html'));
