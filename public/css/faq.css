@@ -1,0 +1,22 @@
+.accordbar .initial-line .line-name a {
+  display: block;
+  font-size: 1.5rem;
+}
+.accordbar .initial-line .line-name a:after {
+  font-family: "FontAwesome";
+  font-size: 2.5rem;
+  /* content: "\f106"; */
+  content: "\f0de";
+
+  float: right;
+  margin: -15px 0 0 0;
+}
+.accordbar .initial-line .line-name a.collapsed:after {
+  /* content: "\f107"; */
+  content: "\f0dd";
+}
+
+
+ #question,  #answer{
+  border-color: #95a6b8;
+}
