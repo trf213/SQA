@@ -20,12 +20,12 @@
 
   </head>
 
-  <body class="home">
-    <div class="home">
+  <body class="homewhite">
+    <div class="homewhite">
 
       <!-- Non-Fixed Navbar -->
       
-      <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block blacknavbar">
+      <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block">
         <div class="d-flex justify-content-between">
           <a class="navbar-brand" href="./home.html"> ServeYou Hospital</a>
           <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -35,13 +35,13 @@
       
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link active" href="#">Home</a>
+              <a class="nav-item nav-link active" href="./home.html">Home</a>
               <a class="nav-item nav-link" href="./ward.html">Wards</a>
-              <a class="nav-item nav-link" href="#">Services</a>
-              <a class="nav-item nav-link" href="#">Visitors</a>
-              <a class="nav-item nav-link" href="#">News</a>
+              <a class="nav-item nav-link" href="./services.html">Services</a>
+              <a class="nav-item nav-link" href="./visit.html">Visitors</a>
+              <a class="nav-item nav-link" href="./news.html">News</a>
               <a class="nav-item nav-link" href="./faq.html">FAQs</a>
-              <a class="nav-item nav-link" href="#">Contact Us</a>
+              <a class="nav-item nav-link" href="./contact.html">Contact Us</a>
             </div>
       
             <span class="navbar-text">
@@ -60,8 +60,8 @@
       <main>
         <!-- header -->
 
-        <header id="carousel" class="p-0 text-white">
-          <div class="container-fluid d-none d-lg-block">
+        <header id="carousel" class="p-0 text-white bg-white">
+          <div class="container d-none d-lg-block">
             <div class="row">
               <div class="col-md-12 p-0 mx-auto text-center">
                 <div id="aephotos" class="carousel slide" data-ride="carousel">
@@ -114,7 +114,7 @@
                       </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="#">
+                      <a href="./services.html">
                         <img
                           src="./img/Doctors1.jpg"
                           alt="Accident"
@@ -129,7 +129,7 @@
                         </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="#">
+                      <a href="./visit.html">
                         <img
                           src="./img/Ward2.jpg"
                           alt="Accident"
@@ -144,7 +144,7 @@
                       </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="#">
+                      <a href="./news.html">
                         <img
                           src="./img/News.jpeg"
                           alt="Accident"
@@ -175,7 +175,7 @@
                       </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="#">
+                      <a href="./contact.html">
                         <img
                           src="./img/Call.jpg"
                           alt="Accident"
@@ -212,66 +212,55 @@
                   <!-- end of controls -->
                 </div>
               </div>
+
+         
+
             </div>
           </div>
         </header>
         <!-- end of header -->
      
-        <hr>
 
-        <!-- News section section -->
-
-        <section id="homenews" class="d-none d-lg-block">
-          <div class="container-fluid py-0">
-            <div class="row">
-              <div class="col-4 px-0">
-                <img src="./img/presscon.jpg" alt="Press conference" class="newsphoto">
-              </div>
-              <div class="col-4 bg-white mr-0">
-                <h1 class="py-2 font-weight-bold text-uppercase"><u>
-                  Latest News</u>
-                </h1>
-                <br /><br />
-                <h4 class="bg-info">ServeYou Well Equipped For Covoid-19 </h3>
-                <br>
-                <p class="">
-                  President of ServeYou Hospital, Jack Harris declares that ServeYou Hospital does not have a shortage in ventilators. When questioned by Barbados Today on Monday morning....
-                </p>
-                <div class="d-flex justify-content-between">
-                  <p class="font-italic">- April 29th</p>
-                  <p class="font-weight-bold"><a href="./news.html" style="color:black">Read more</a></p>
-                </div>
-                
-                
-              </div>
-              
-              <div class="col-4 px-0">
-                <img src="./img/ventilator.jpg" alt="Press conference" class="newsphoto">
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr>
+     
 
         <!-- end of news section section -->
 
         <!-- No insurance section section -->
 
         <section id="welcome" class="d-none d-lg-block">
-          <div class="container-fluid py-0">
+          <div class="container py-4">
             <div class="row">
-              <div class="col-4 mr-0" style="background: rgba(255,255,255,0.9)">
-                <h2 class="pt-5 font-weight-bold text-center" >
-                  No Insurance?
-                </h2>
+                <div class="col-4 bg-white mr-0 mr-3 border border-primary">
+                <h1 class="py-2 font-weight-bold text-uppercase"><u>
+                    Latest News</u>
+                </h1>
                 <br /><br />
-                <h4><a class="text-success" href="./faq.html">Find out today how you can still be seen by one of our doctors...</a></h4>
-                <br>
+                <h5 class="bg-info">ServeYou Well Equipped For Covoid-19 </h5>
+                  <br>
+                  <p>
+                    President of ServeYou Hospital, Jack Harris declares that ServeYou Hospital does not have a shortage in ventilators.
+                    When questioned by Barbados Today on Monday morning....
+                  </p>
+                  <div class="d-flex justify-content-between">
+                    <p class="font-italic">- April 29th</p>
+                    <p class="font-weight-bold"><a href="./news.html" style="color:black">Read more</a></p>
                 
-                
-              </div>
-              
+                  </div>
+                </div>
+                <div class="col-3 mr-3 border border-info" style="background: rgba(255,255,255,0.9)">
+                  <h3 class="pt-5 font-weight-bold text-center" >
+                    No Insurance?
+                  </h3>
+                  <br /><br />
+                  <h4 class="text-center"><a class="text-success" href="./faq.html">Find out today how you can still be seen by one of our doctors...</a></h4>
+                 </div>
+                <div class="col-3 mr-0 border border-info">
+                  <h3 class="pt-5 font-weight-bold text-center" >
+                    New To A&E?
+                  </h3>
+                  <br /><br />
+                  <h5 class="text-center"><a class="text-prinary" href="./ward.html">Get familiar with our department</a></h4>
+                 </div>
             </div>
           </div>
         </section>
@@ -409,7 +398,7 @@
               ></a>
             </div>
           </div>
-          <p class="pt-2 pb-0 text-white text-center">
+          <p class="pt-2 pb-0 text-center">
             <small
               >Copyright &copy; 2020 ServeYou Hospital. All Right
               Reserved.</small
@@ -425,6 +414,6 @@
     <!-- bootstrap js -->
     <script src="./js/bootstrap.bundle.min.js"></script>
 
-    <script type="text/javascript" src="./js/float2.js"></script>
+  
   </body>
 </html>
