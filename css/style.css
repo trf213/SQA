@@ -58,6 +58,13 @@ main {
     display: flex;
     flex-direction: column;
 }
+.homewhite{
+     margin: 0;
+    min-height: 100%;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+}
 
 /* Controls scaling of photos in the carousel */
 .imgheight{
@@ -144,6 +151,7 @@ main {
     padding: 0;
 }
 
+
 /* Used to style the apps sections of index page */
 #apps{
     font-family: 'Arvo', serif;
@@ -155,14 +163,15 @@ main {
 
 #homenews{
     font-family: 'Arial', serif;
-    background: rgb(245, 213, 213);
+    /* background: rgb(126, 116, 116); */
+    background: rgba(224, 137, 137, 0.993) !important;
     /* background: rgb(0,0,0,0.6); */
     color: rgba(0,0,0,1);
 }
 #welcome{
     font-family: 'Arial', serif;
     /* background: rgb(245, 213, 213); */
-    background: rgba(0,0,0,0.6);
+    background: rgba(255, 240, 240, 0.6);
     color: rgba(0,0,0,1);
 }
 
