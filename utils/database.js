@@ -23,15 +23,26 @@ const QUERIES = {
   Checkfaq: `SELECT * FROM faqs`
 }
 
+// Connect to SQL server
 const conn = sql.createConnection(connConfig);
-console.log('Connected to SQL server');
+conn.on('connect', function() {
+  console.log('Connected to SQL server');
+});
+conn.on('error', function(err) {
+  console.error('Cannot connect to SQL server');
+  throw err;
+});
+
 
 // Switch to DB
 conn.query(QUERIES.useDB, function(err, results) {
   if (err) {
     // Create the DB
     conn.query(QUERIES.createDB, function (err, results) {
-      if (err) throw err;
+      if (err) {
+        console.error(`Cannot create database ${DB_NAME}`);
+        throw err;
+      }
       console.log('Database created');
     });
 
@@ -53,6 +64,23 @@ conn.query(QUERIES.useDB, function(err, results) {
             if (err) throw err;
             console.log('Logs table created');
           });
+
+          // Create one admin and guest user for testing
+          conn.query(QUERIES.InsertNewUser, [ 'John', 'password', null, null, false ], function(err, results) {
+            if (err) {
+              if (err.code === 'ER_DUP_ENTRY') {
+                console.log('Guest user already exists');
+              } else throw err;
+            }
+          });
+          conn.query(QUERIES.InsertNewUser, [ 'Admin', 'password', null, null, true ], function(err, results) {
+            if (err) {
+              if (err.code === 'ER_DUP_ENTRY') {
+                console.log('Admin user already exists');
+              } else throw err;
+            }
+          });
+
         });
       }
 
@@ -72,6 +100,8 @@ conn.query(QUERIES.useDB, function(err, results) {
     });
   }
   console.log(`Using ${DB_NAME}`);
+
+  
   
 });
 
