@@ -158,6 +158,13 @@ main {
     display: flex;
     flex-direction:column; 
     border-radius: 0px;
+    background: #3363ff;
+}
+#appsindex{
+    font-family: 'Arvo', serif;
+    display: flex;
+    flex-direction:column; 
+    border-radius: 0px;
 }
 
 
