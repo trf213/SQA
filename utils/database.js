@@ -17,7 +17,10 @@ const QUERIES = {
   createTableLogs: 'CREATE TABLE user_logs (logID int AUTO_INCREMENT, userID VARCHAR(255) NOT NULL, isLoggedIn BOOL NOT NULL, timestamp TIMESTAMP, PRIMARY KEY (logID), FOREIGN KEY (userID) REFERENCES users(userID))',
   InsertNewUser:`INSERT INTO users (userID, password, name, child, isAdmin) VALUES (?,?,?,?,?)`,
   UpdateGuestUser:`UPDATE users SET  name = ?, child = ? WHERE userID = ?`,
-  checkUser: `SELECT * FROM users WHERE userID = ? AND password = ? AND isAdmin = ?`
+  checkUser: `SELECT * FROM users WHERE userID = ? AND password = ? AND isAdmin = ?`,
+  checkAdminUser: `SELECT * FROM users WHERE name = ? AND password = ? AND isAdmin = ?`,
+  Insertfaq: `INSERT INTO faqs (quesID, ques, answer) VALUES (?,?,?)`,
+  Checkfaq: `SELECT * FROM faqs`
 }
 
 const conn = sql.createConnection(connConfig);

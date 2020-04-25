@@ -4,6 +4,7 @@ const path = require('path');
 
 const rootDir = require('./utils/path');
 const loginRoutes = require('./routes/login');
+const faqRoutes = require('./routes/faq');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,6 +15,7 @@ app.use(express.static(path.join(rootDir, 'webfonts')));
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/login', loginRoutes);
+app.use('/faq', faqRoutes);
 
 // Index Routes
 app.get('/',function(req,res) {
@@ -36,7 +38,10 @@ app.get('/faq',function(req,res) {
 });
 
 app.get('/faqadmin',function(req,res) {
-    res.sendFile(path.join(rootDir, 'faq.html'));
+    res.sendFile(path.join(rootDir, 'faqadmin.html'));
 });
+
+
+
 
 app.listen(port, ()=>console.log(`Listening on port ${port}`));
