@@ -167,6 +167,10 @@ main {
     border-radius: 0px;
 }
 
+#logout{
+    background: #3363ff;
+}
+
 
 #homenews{
     font-family: 'Arial', serif;
