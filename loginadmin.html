@@ -1,104 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Login - ServeYou Hospital</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Admin Login - ServeYou A&E</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
 
     <!-- font awesome -->
     <script src="./js/all.js"></script>
 
     <!-- <!-- Style CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-</head>
+  <body class="home login">
+    <!-- Non-Fixed Navbar -->
 
-<body class="home login">
-
-
-
-<!-- Non-Fixed Navbar -->
-
-<nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block align-nav blacknavbar">
-    <div class="d-flex justify-content-between">
-        <a class="navbar-brand " href="./index.html"> ServeYou Hospital</a>
+    <nav
+      id="nofixnav"
+      class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block align-nav blacknavbar"
+    >
+      <div class="d-flex justify-content-between">
+        <a class="navbar-brand" href="./index.html"> ServeYou A&E</a>
 
         <span class="navbar-text">
-            <form class="form-inline">
-                <a href="./login.html" class="btn logbutton" type="button">
-                    <i class="far fa-user"></i> Guest Login
-                </a>
-            </form>
+          <form class="form-inline">
+            <a href="./login.html" class="btn logbutton" type="button">
+              <i class="far fa-user"></i> Guest Login
+            </a>
+          </form>
         </span>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-
-
-    
-
-
-<section class="text-center">
-    <div class="container text-white">
+    <section class="text-center">
+      <div class="container text-white">
         <h2>Please Enter Login Information</h2>
-        <br><br>
-        <div id="error" class=" col-12 text-white"></div>
-        <br>
-        <form class="form-horizontal" id="admission" action="./homeadmin.html" method="GET">
-            <div class="form-group d-flex justify-content-center">
-                <div class="col-6 col-md-5 col-lg-4 col-xl-3">
-                    <input type="text" class="form-control" id="name" placeholder="Staff Name" name="name" required>
-                </div>
+        <br /><br />
+        <div id="error" class="col-12 text-white"></div>
+        <br />
+        <form
+          class="form-horizontal"
+          id="admission"
+          action="./homeadmin.html"
+          method="GET"
+        >
+          <div class="form-group d-flex justify-content-center">
+            <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Staff Name"
+                name="name"
+                required
+              />
             </div>
-            <div class="form-group d-flex justify-content-center">
-                <div class="col-6 col-md-5 col-lg-4 col-xl-3">
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password"
-                        required>
-                </div>
+          </div>
+          <div class="form-group d-flex justify-content-center">
+            <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+                name="password"
+                required
+              />
             </div>
-            <div class="form-group">
-                <div class="col-10 col-lg-11">
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="remember"> Remember me</label>
-                    </div>
-                </div>
+          </div>
+          <div class="form-group">
+            <div class="col-10 col-lg-11">
+              <div class="checkbox">
+                <label
+                  ><input type="checkbox" name="remember" /> Remember me</label
+                >
+              </div>
             </div>
-            <div class="form-group">
-                <div class=" col-sm-12">
-                    <button type="submit" class="btn btn-success mr-3 px-4">Login</button>
-                    <a href="./index.html" type="button" class="btn btn-success px-4">Back</a>
-                </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-success mr-3 px-4">
+                Login
+              </button>
+              <a href="./index.html" type="button" class="btn btn-success px-4"
+                >Back</a
+              >
             </div>
+          </div>
         </form>
-    </div>
-</section>
-   
+      </div>
+    </section>
 
-
-<!-- End of Add FAQ -->
-
+    <!-- End of Add FAQ -->
 
     <!-- JQuery -->
     <script src="./js/jquery-3.4.1.min.js"></script>
 
     <!-- Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Bootstrap js -->
     <script src="./js/bootstrap.bundle.min.js"></script>
 
     <!-- Form js -->
     <script type="text/javascript" src="./js/form.js"></script>
-
-
-</body>
-
+  </body>
 </html>

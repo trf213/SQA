@@ -1,128 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Visits ServeYou Hospital</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Visits - ServeYou A&E</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
 
     <!-- font awesome -->
 
     <script defer src="./js/all.js"></script>
 
-
-
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- <!-- Style CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-
-</head>
-
-<body>
-
+  <body>
     <!-- Non-Fixed Navbar -->
 
-    <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block">
-        <div class="d-flex justify-content-between">
-            <a class="navbar-brand" href="./homeadmin.html"> ServeYou Hospital</a>
-            <button id="togglebutton" class="navbar-toggler bg-info" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav
+      id="nofixnav"
+      class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block"
+    >
+      <div class="d-flex justify-content-between">
+        <a class="navbar-brand" href="./homeadmin.html"> ServeYou A&E</a>
+        <button
+          id="togglebutton"
+          class="navbar-toggler bg-info"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="./homeadmin.html">Home</a>
-                    <a class="nav-item nav-link" href="./wardadmin.html">Wards</a>
-                    <a class="nav-item nav-link" href="./servicesadmin.html">Services</a>
-                    <a class="nav-item nav-link active" href="visitadmin.html">Visitors</a>
-                    <a class="nav-item nav-link" href="./newsadmin.html">News</a>
-                    <a class="nav-item nav-link" href="faqadmin.html">FAQs</a>
-                    <a class="nav-item nav-link" href="./contactadmin.html">Contact Us</a>
-                </div>
-                <span class="navbar-text ">
-                    <form class="form-inline">
-                        <a href="./index.html" class="btn logbutton" type="button">
-                            <i class="far fa-user"></i> Log Out
-                        </a>
-                    </form>
-                </span>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="./homeadmin.html">Home</a>
+            <a class="nav-item nav-link" href="./wardadmin.html">Wards</a>
+            <a class="nav-item nav-link" href="./servicesadmin.html"
+              >Services</a
+            >
+            <a class="nav-item nav-link active" href="visitadmin.html"
+              >Visitors</a
+            >
+            <a class="nav-item nav-link" href="./newsadmin.html">News</a>
+            <a class="nav-item nav-link" href="faqadmin.html">FAQs</a>
+            <a class="nav-item nav-link" href="./contactadmin.html"
+              >Contact Us</a
+            >
+          </div>
+          <span class="navbar-text">
+            <form class="form-inline">
+              <a href="./index.html" class="btn logbutton" type="button">
+                <i class="far fa-user"></i> Log Out
+              </a>
+            </form>
+          </span>
         </div>
+      </div>
     </nav>
 
     <!-- Fixed Navbar -->
 
-    <nav id="fixnav" class="navbar navbar-expand-lg navbar-dark navibar fixed-top d-lg-none">
-        <a class="navbar-brand" href="./homeadmin.html"> ServeYou Hospital</a>
-        <button id="togglebutton" class="navbar-toggler " type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav
+      id="fixnav"
+      class="navbar navbar-expand-lg navbar-dark navibar fixed-top d-lg-none"
+    >
+      <a class="navbar-brand" href="./homeadmin.html"> ServeYou A&E</a>
+      <button
+        id="togglebutton"
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="./homeadmin.html">Home</a>
-                <a class="nav-item nav-link" href="./wardadmin.html">Wards</a>
-                <a class="nav-item nav-link" href="./servicesadmin.html">Services</a>
-                <a class="nav-item nav-link active" href="./visitadmin.html">Visitors</a>
-                <a class="nav-item nav-link" href="./newsadmin.html">News</a>
-                <a class="nav-item nav-link" href="faqadmin.html">FAQs</a>
-                <a class="nav-item nav-link" href="./contactadmin.html">Contact Us</a>
-            </div>
-            <span class="navbar-text ">
-                <form class="form-inline">
-                    <a href="./index.html" class="btn logbutton" type="button">
-                        <i class="far fa-user"></i> Log Out</a>
-                </form>
-            </span>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="./homeadmin.html">Home</a>
+          <a class="nav-item nav-link" href="./wardadmin.html">Wards</a>
+          <a class="nav-item nav-link" href="./servicesadmin.html">Services</a>
+          <a class="nav-item nav-link active" href="./visitadmin.html"
+            >Visitors</a
+          >
+          <a class="nav-item nav-link" href="./newsadmin.html">News</a>
+          <a class="nav-item nav-link" href="faqadmin.html">FAQs</a>
+          <a class="nav-item nav-link" href="./contactadmin.html">Contact Us</a>
         </div>
+        <span class="navbar-text">
+          <form class="form-inline">
+            <a href="./index.html" class="btn logbutton" type="button">
+              <i class="far fa-user"></i> Log Out</a
+            >
+          </form>
+        </span>
+      </div>
     </nav>
 
     <section class="mt-3">
-        <div class="container pt-2">
-            <div class="row">
-                <cdiv class="col">
-                    <h2 class="text-uppercase font-weight-bold">Visting Hours</h2>
-                    <br><br>
-                    <p>ServeYou is the only hospital in Barbados that offers 24 hours visitation. Ofcourse, depending o
-                        the condition of the
-                        patient, these hours may be amended.</p>
-                    <br>
-                    <h5>Holiday Parties & Special Events</h5>
-                    <ul>
-                        <li>Party Rooms Available For Birthdays (maximum of <b>five</b> friends/family members</li>
-                        <li>There is a general Christmas party annually for <b>Non-Intensive Care</b> patients. At this
-                            time
-                            families/friends (maximum of <b>five</b> per family) are allowed to attend.</li>
-                    </ul>
-                </cdiv>
-            </div>
+      <div class="container pt-2">
+        <div class="row">
+          <cdiv class="col">
+            <h2 class="text-uppercase font-weight-bold">Visting Hours</h2>
+            <br /><br />
+            <p>
+              ServeYou is the only hospital in Barbados that offers 24 hours
+              visitation. Ofcourse, depending o the condition of the patient,
+              these hours may be amended.
+            </p>
+            <br />
+            <h5>Holiday Parties & Special Events</h5>
+            <ul>
+              <li>
+                Party Rooms Available For Birthdays (maximum of
+                <b>five</b> friends/family members
+              </li>
+              <li>
+                There is a general Christmas party annually for
+                <b>Non-Intensive Care</b> patients. At this time
+                families/friends (maximum of <b>five</b> per family) are allowed
+                to attend.
+              </li>
+            </ul>
+          </cdiv>
         </div>
+      </div>
     </section>
-
-
 
     <!-- JQuery -->
     <script src="./js/jquery-3.4.1.min.js"></script>
 
-
     <!-- bootstrap js -->
     <script src="./js/bootstrap.bundle.min.js"></script>
-
-
-
-
-</body>
-
+  </body>
 </html>

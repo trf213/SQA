@@ -1,96 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Guest Login Questions - ServeYou Hospital</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Guest Login Questions - ServeYou A&E</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
 
     <!-- font awesome -->
     <script defer src="./js/all.js"></script>
 
-
     <!-- <!-- Style CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
+  <body class="home login">
+    <!-- Non-Fixed Navbar -->
 
-</head>
-
-<body class="home login">
-
-<!-- Non-Fixed Navbar -->
-
-<nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block align-nav blacknavbar">
-    <div class="d-flex justify-content-between">
-    <a class="navbar-brand " href="./index.html"> ServeYou Hospital</a>
+    <nav
+      id="nofixnav"
+      class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block align-nav blacknavbar"
+    >
+      <div class="d-flex justify-content-between">
+        <a class="navbar-brand" href="./index.html"> ServeYou A&E</a>
 
         <span class="navbar-text">
-            <form class="form-inline">
-                <a href="./loginadmin.html" class="btn logbutton" type="button">
-                    <i class="far fa-user"></i> Admin Login
-                </a>
-            </form>
+          <form class="form-inline">
+            <a href="./loginadmin.html" class="btn logbutton" type="button">
+              <i class="far fa-user"></i> Admin Login
+            </a>
+          </form>
         </span>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-    
-
-
-<section class="text-center">
-    <div class="container text-white">
+    <section class="text-center">
+      <div class="container text-white">
         <h2>Please Enter Your Information</h2>
-        <br><br>
-        <div id="error" class=" col-12 text-white"></div>
-        <br>
-        <form class="form-horizontal" id="fam-names" action="./home.html" method="GET">
-            <div class="form-group d-flex justify-content-center">
-                <div class="col-6 col-md-5 col-lg-4 col-xl-3">
-                    <input type="text" class="form-control" id="gname" placeholder="Your Name" name="gname" required>
-                </div>
+        <br /><br />
+        <div id="error" class="col-12 text-white"></div>
+        <br />
+        <form
+          class="form-horizontal"
+          id="fam-names"
+          action="./home.html"
+          method="GET"
+        >
+          <div class="form-group d-flex justify-content-center">
+            <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+              <input
+                type="text"
+                class="form-control"
+                id="gname"
+                placeholder="Your Name"
+                name="gname"
+                required
+              />
             </div>
-            <div class="form-group d-flex justify-content-center">
-                <div class="col-6 col-md-5 col-lg-4 col-xl-3">
-                    <input type="text" class="form-control" id="cname" placeholder="Child's Name" name="cname"
-                        required>
-                </div>
+          </div>
+          <div class="form-group d-flex justify-content-center">
+            <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+              <input
+                type="text"
+                class="form-control"
+                id="cname"
+                placeholder="Child's Name"
+                name="cname"
+                required
+              />
             </div>
-            <br>
-            <div class="form-group">
-                <div class=" col-sm-12">
-                    <button type="submit" class="btn btn-success mr-3 px-4">Submit</button>
-                    <a href="./index.html" type="button" class="btn btn-success px-4">Cancel</a>
-                </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-success mr-3 px-4">
+                Submit
+              </button>
+              <a href="./index.html" type="button" class="btn btn-success px-4"
+                >Cancel</a
+              >
             </div>
+          </div>
         </form>
-    </div>
-</section>
-   
+      </div>
+    </section>
 
-
-<!-- End of Add FAQ -->
-
+    <!-- End of Add FAQ -->
 
     <!-- JQuery -->
     <script src="./js/jquery-3.4.1.min.js"></script>
 
     <!-- Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Bootstrap js -->
     <script src="./js/bootstrap.bundle.min.js"></script>
 
     <!-- Form js -->
     <script type="text/javascript" src="./js/form.js"></script>
-
-
-</body>
-
+  </body>
 </html>
