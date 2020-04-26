@@ -23,7 +23,7 @@ router.post('/add', (req,res) =>{
     let question =  req.body.question;
     let answer = req.body.answer;
     
-    db.query(Q.Insertfaq, [ 16, question, answer], function(err, result) {
+    db.query(Q.Insertfaq, [0, question, answer], function(err, result) {
         if (err) throw err;
         console.log(result);
        
@@ -36,6 +36,14 @@ router.post('/add', (req,res) =>{
 });
 
 router.get('/select', (req,res)=>{
-    res.json({user: 'Flavio'} );
+    db.query(Q.Checkfaq, function(err, result) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result );
+        
+        
+      
+      });
+    
 });
 module.exports = router;
