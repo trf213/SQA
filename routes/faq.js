@@ -11,10 +11,14 @@ const Q = database.queries;
 const querystring = require('querystring');
 
 router.get('/guest', (req,res)=>{
+    if(req.session.userID === undefined)
+        res.redirect('/');
     res.sendFile(path.join(rootDir, 'faq.html'));
 });
 
 router.get('/admin', (req,res)=>{
+    if(req.session.userID === undefined)
+        res.redirect('/');
     res.sendFile(path.join(rootDir, 'faqadmin.html'));
 });
 

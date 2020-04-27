@@ -18,14 +18,14 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
 
-  <body class="home">
-    <div class="home">
+  <body class="homewhite">
+    <div class="homewhite">
 
       <!-- Non-Fixed Navbar -->
       
-      <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block blacknavbar">
+      <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block">
         <div class="d-flex justify-content-between">
-          <a class="navbar-brand" href="./home.html"> ServeYou Hospital</a>
+          <a class="navbar-brand" href="./home.html"> ServeYou A&E</a>
           <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,18 +33,18 @@
       
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link active" href="#">Home</a>
+              <a class="nav-item nav-link active" href="/home">Home</a>
               <a class="nav-item nav-link" href="/ward">Wards</a>
-              <a class="nav-item nav-link" href="#">Services</a>
-              <a class="nav-item nav-link" href="#">Visitors</a>
-              <a class="nav-item nav-link" href="#">News</a>
-              <a class="nav-item nav-link" href="/faq">FAQs</a>
-              <a class="nav-item nav-link" href="#">Contact Us</a>
+              <a class="nav-item nav-link" href="/services">Services</a>
+              <a class="nav-item nav-link" href="/visit">Visitors</a>
+              <a class="nav-item nav-link" href="/news">News</a>
+              <a class="nav-item nav-link" href="/faq/guest">FAQs</a>
+              <a class="nav-item nav-link" href="/contact">Contact Us</a>
             </div>
       
             <span class="navbar-text">
               <form class="form-inline">
-                <a href="/" class="btn logbutton font-weight-bold" type="button">
+                <a href="./login/logout" class="btn logbutton font-weight-bold" type="button">
                   <i class="far fa-user"></i> Log Out
                 </a>
               </form>
@@ -58,8 +58,8 @@
       <main>
         <!-- header -->
 
-        <header id="carousel" class="p-0 text-white">
-          <div class="container-fluid d-none d-lg-block">
+        <header id="carousel" class="p-0 text-white bg-white">
+          <div class="container d-none d-lg-block">
             <div class="row">
               <div class="col-md-12 p-0 mx-auto text-center">
                 <div id="aephotos" class="carousel slide" data-ride="carousel">
@@ -82,7 +82,7 @@
                     <div class="carousel-item active">
                       <a href="#">
                         <img
-                          src="/img/AESign.jpeg"
+                          src="./img/AESign.jpeg"
                           alt="Accident"
                           class="imgheight d-block w-100"
                         />
@@ -90,15 +90,15 @@
                       <div class="carousel-caption trickcenter">
                         <div>
                           <h2>
-                            Welcome To The New Accident & Emergency (AED) Website
+                            Welcome To The New Accident & Emergency (A&E) Website
                           </h2>
                         </div>
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <a href="./ward.html">
+                      <a href="/ward">
                         <img
-                          src="/img/Ward.jpg"
+                          src="./img/Ward.jpg"
                           alt="Accident"
                           class="imgheight d-block w-100"
                         />
@@ -112,9 +112,9 @@
                       </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="#">
+                      <a href="/services">
                         <img
-                          src="/img/Doctors1.jpg"
+                          src="./img/Doctors1.jpg"
                           alt="Accident"
                           class="imgheight d-block w-100"
                         />
@@ -127,9 +127,9 @@
                         </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="#">
+                      <a href="/visit">
                         <img
-                          src="/img/Ward2.jpg"
+                          src="./img/Ward2.jpg"
                           alt="Accident"
                           class="imgheight d-block w-100"
                         />
@@ -142,9 +142,9 @@
                       </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="#">
+                      <a href="/news">
                         <img
-                          src="/img/News.jpeg"
+                          src="./img/News.jpeg"
                           alt="Accident"
                           class="imgheight d-block w-100"
                         />
@@ -157,9 +157,9 @@
                       </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="./faq.html">
+                      <a href="/faq/guest">
                         <img
-                          src="/img/FAQ.jpg"
+                          src="./img/FAQ.jpg"
                           alt="Accident"
                           class="imgheight d-block w-100"
                         />
@@ -173,9 +173,9 @@
                       </a>
                     </div>
                     <div class="carousel-item">
-                      <a href="#">
+                      <a href="/contact">
                         <img
-                          src="/img/Call.jpg"
+                          src="./img/Call.jpg"
                           alt="Accident"
                           class="imgheight d-block w-100"
                         />
@@ -210,66 +210,55 @@
                   <!-- end of controls -->
                 </div>
               </div>
+
+         
+
             </div>
           </div>
         </header>
         <!-- end of header -->
      
-        <hr>
 
-        <!-- News section section -->
-
-        <section id="homenews" class="d-none d-lg-block">
-          <div class="container-fluid py-0">
-            <div class="row">
-              <div class="col-4 px-0">
-                <img src="/img/presscon.jpg" alt="Press conference" class="newsphoto">
-              </div>
-              <div class="col-4 bg-white mr-0">
-                <h1 class="py-2 font-weight-bold text-uppercase"><u>
-                  Latest News</u>
-                </h1>
-                <br /><br />
-                <h4 class="bg-info">ServeYou Well Equipped For Covoid-19 </h3>
-                <br>
-                <p class="">
-                  President of ServeYou Hospital, Jack Harris declares that ServeYou Hospital does not have a shortage in ventilators. When questioned by Barbados Today on Monday morning....
-                </p>
-                <div class="d-flex justify-content-between">
-                  <p class="font-italic">- April 29th</p>
-                  <p class="font-weight-bold"><a href="./news.html" style="color:black">Read more</a></p>
-                </div>
-                
-                
-              </div>
-              
-              <div class="col-4 px-0">
-                <img src="/img/ventilator.jpg" alt="Press conference" class="newsphoto">
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr>
+     
 
         <!-- end of news section section -->
 
         <!-- No insurance section section -->
 
         <section id="welcome" class="d-none d-lg-block">
-          <div class="container-fluid py-0">
+          <div class="container py-4">
             <div class="row">
-              <div class="col-4 mr-0" style="background: rgba(255,255,255,0.9)">
-                <h2 class="pt-5 font-weight-bold text-center" >
-                  No Insurance?
-                </h2>
+                <div class="col-5 bg-white mr-3 border border-primary">
+                <h1 class="py-2 font-weight-bold text-uppercase"><u>
+                    Latest News</u>
+                </h1>
                 <br /><br />
-                <h4><a class="text-success" href="./faq.html">Find out today how you can still be seen by one of our doctors...</a></h4>
-                <br>
+                <h5 class="bg-info">ServeYou Well Equipped For Covoid-19 </h5>
+                  <br>
+                  <p>
+                    President of ServeYou Hospital, Jack Harris declares that ServeYou Hospital does not have a shortage in ventilators.
+                    When questioned by Barbados Today on Monday morning....
+                  </p>
+                  <div class="d-flex justify-content-between">
+                    <p class="font-italic">- April 29th</p>
+                    <p class="font-weight-bold"><a href="/news" style="color:black">Read more</a></p>
                 
-                
-              </div>
-              
+                  </div>
+                </div>
+                <div class="col-3 mr-3 border border-info" style="background: rgba(255,255,255,0.9)">
+                  <h3 class="pt-5 font-weight-bold text-center" >
+                    No Insurance?
+                  </h3>
+                  <br /><br />
+                  <h4 class="text-center"><a class="text-success" href="/faq">Find out today how you can still be seen by one of our doctors...</a></h4>
+                 </div>
+                <div class="col-3  mr-0  border border-info">
+                  <h3 class="pt-5 font-weight-bold text-center" >
+                    New To A&E?
+                  </h3>
+                  <br /><br />
+                  <h5 class="text-center"><a class="text-prinary" href="/ward">Get familiar with our department</a></h4>
+                 </div>
             </div>
           </div>
         </section>
@@ -293,7 +282,7 @@
               <!-- first col -->
               <div class="col-12 col-sm-4 text-center my-4">
                 <a
-                  href="./ward.html"
+                  href="/ward"
                   class="btn btn-outline-white btn-block bg-white text-uppercase text-dark mb-5"
                 >
                   <i
@@ -303,7 +292,7 @@
                   <h6 class="text-uppercase my-3">Wards</h6>
                 </a>
                 <a
-                  href="#"
+                  href=" /news"
                   class="btn btn-outline-white btn-block text-uppercase bg-white text-dark"
                 >
                   <i
@@ -318,7 +307,7 @@
               <!-- secondcol -->
               <div class="col-12 col-sm-4 text-center my-4">
                 <a
-                  href="#"
+                  href="/services"
                   class="btn btn-outline-white btn-block text-uppercase text-dark bg-white mb-5"
                 >
                   <i
@@ -328,7 +317,7 @@
                   <h6 class="text-uppercase my-3">Services</h6>
                 </a>
                 <a
-                  href="./faq.html"
+                  href="/faq"
                   class="btn btn-outline-white btn-block text-uppercase bg-white text-dark"
                 >
                   <i
@@ -342,7 +331,7 @@
               <!-- third col -->
               <div class="col-12 col-sm-4 text-center my-4">
                 <a
-                  href="#"
+                  href="/visit"
                   class="btn btn-outline-white btn-block text-uppercase bg-white text-dark mb-5"
                 >
                   <i
@@ -352,7 +341,7 @@
                   <h6 class="text-uppercase my-3">Visitors</h6>
                 </a>
                 <a
-                  href="#"
+                  href="/contact"
                   class="btn btn-outline-white btn-block text-uppercase bg-white text-dark"
                 >
                   <i
@@ -368,17 +357,16 @@
         </section>
         <!-- end of app section -->
 
-
 <!-- Mobile Log Out Section -->
 
-<section>
+<section id="logout">
   <div class="container d-lg-none">
     <div class="row">
       <div class="col px-0 pb-4 text-center">
 
         <div class="form-row mt-0"></div>
         <div class="col">
-          <a href="/" class="btn btn-success ml-2 px-4" type="button">Log Out</a>
+          <a href="./login/logout" class="btn btn-info ml-2 px-4" type="button">Log Out</a>
         </div>
 
       </div>
@@ -407,9 +395,9 @@
               ></a>
             </div>
           </div>
-          <p class="pt-2 pb-0 text-white text-center">
+          <p class="pt-2 pb-0 text-center">
             <small
-              >Copyright &copy; 2020 ServeYou Hospital. All Right
+              >Copyright &copy; 2020 ServeYou Accident & Emergency. All Right
               Reserved.</small
             >
           </p>
@@ -417,8 +405,7 @@
       </footer>
       <!-- end of footer section -->
     </div>
-
-    <!-- JQuery -->
+  <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <!-- Popper -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -18,7 +18,11 @@
 </head>
 
 <body class="home login">
-
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('myParam');
+    console.log(urlParams);
+</script>
 <!-- Non-Fixed Navbar -->
 
 <nav id="nofixnav" class="navbar navbar-expand-lg navbar-dark navibar d-none d-lg-block align-nav blacknavbar">

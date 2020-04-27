@@ -13,6 +13,7 @@ const querystring = require('querystring');
 
 
 router.get('/guest',function(req,res) {
+ 
   res.sendFile(path.join(rootDir, 'login.html'));
 });
 
@@ -20,10 +21,19 @@ router.get('/admin',function(req,res) {
   res.sendFile(path.join(rootDir, 'loginadmin.html'));
 });
 
-router.get('/security/:user',function(req,res) {
+router.get('/security',function(req,res) {
   res.sendFile(path.join(rootDir, 'security.html'));
 });
 
+router.get('/logout', function(req,res){
+  if(req.session)
+  {
+    req.session.destroy();
+   
+    res.redirect('/')
+  }
+    
+});
 router.post('/guest', (req, res) => {
   const guestID = req.body.guestID;
   const password = req.body.password;
@@ -33,7 +43,10 @@ router.post('/guest', (req, res) => {
     console.log(result);
     if(result.length > 0)
     {
-      res.redirect(`/login/security/${guestID}`);
+      
+      req.session.userID = guestID;
+      console.log(req.session.userID );
+      res.redirect(`/login/security`);
     }else res.redirect('/login/guest');
   });
 
@@ -43,8 +56,8 @@ router.post('/guest', (req, res) => {
 router.post('/security/:user', (req, res) => {
   const guestName  = req.body.gname;
   const childName  = req.body.cname;
-  console.log(req.originalUrl)
-  db.query(Q.UpdateGuestUser, [ req.params.user, guestName, childName], function(err, result) {
+ 
+  db.query(Q.UpdateGuestUser, [  guestName, childName, req.session.userID], function(err, result) {
     if (err) throw err;
     console.log(result);
     if(result.length > 0)
@@ -62,7 +75,7 @@ router.post('/admin', (req, res) => {
   const adminID = req.body.name;
   const password = req.body.password;
   console.log(req.body);
-  db.query(Q.checkAdminUser, [ adminID, password, 1 ], function(err, result) {
+  db.query(Q.checkUser, [ adminID, password, 1 ], function(err, result) {
     if (err) throw err;
     console.log(result);
     if(result.length > 0)
