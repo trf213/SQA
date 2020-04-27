@@ -3,7 +3,6 @@ const url = '/faq/select';
 fetch(url)
 .then(response => response.json())
 .then(function(data) {
-  console.log(data[0]);
   for(var i = 0; i < data.length; i++)
   {
     let accordion =  document.getElementById('accordion');
@@ -29,5 +28,5 @@ fetch(url)
   }
 })
 .catch(function(error) {
-  console.log(error);
+  console.error(error);
 });

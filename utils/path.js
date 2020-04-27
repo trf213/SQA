@@ -1,5 +1,5 @@
 // Creating Util Functions
 
-const path = require('path');
+const myModulePath = require('app-root-path').resolve('.');
 
-module.exports = path.dirname(process.mainModule.filename);
+module.exports = myModulePath;

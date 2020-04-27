@@ -2,13 +2,6 @@ const sql = require('mysql2');
 
 const DB_NAME = 'hospitalDB';
 
-const connConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: '',
-};
-
 const poolConfig = {
   host: 'localhost',
   user: 'root',
@@ -39,85 +32,82 @@ pool.on('error', function(err) {
   throw err;
 });
 
-// Create connection to perform DB setup
-const conn = sql.createConnection(connConfig);
-conn.on('connect', function() {
-  console.log('Connected to SQL server');
-});
-conn.on('error', function(err) {
-  console.error('Something went wrong with SQL server');
-  throw err;
-});
+const setUpDB = function(dbName = DB_NAME) {
+  return new Promise(function(resolve, reject) {
+    const connConfig = {
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: '',
+    };
 
-// Switch to DB
-conn.query(QUERIES.useDB, function(err, results) {
-  if (err) {
-    // Create the DB
-    conn.query(QUERIES.createDB, function (err, results) {
-      if (err) {
-        console.error(`Cannot create database ${DB_NAME}`);
-        throw err;
-      }
-      console.log('Database created');
-    });
-
-    conn.query(QUERIES.useDB, function(err, results) {
+    // Create connection to perform DB setup
+    const conn = sql.createConnection(connConfig);
+    conn.connect(function(err, results) {
       if (err) throw err;
-    });
 
-    // Check if users table exists
-    conn.query('SELECT * FROM users LIMIT 1', function(err, results) {
+      // Create the DB
+      conn.query(`CREATE DATABASE IF NOT EXISTS ${dbName}`, function(err, results) {
+        if (err) {
+          console.error(`Cannot create database ${dbName}`);
+          reject(err);
+        }
 
-      if (err) {
-        // Create users table
-        conn.query(QUERIES.createTableUsers, function(err, results) {
-          if (err) throw err;
-          console.log('Users table created');
-
-          // Create logs table
-          conn.query(QUERIES.createTableLogs, function(err, results) {
-            if (err) throw err;
-            console.log('Logs table created');
-          });
-
-          // Create one admin and guest user for testing
-          conn.query(QUERIES.InsertNewUser, [ 'John', 'password', null, null, false ], function(err, results) {
+        conn.query(`USE ${dbName}`, function(err, results) {
+          if (err) reject(err);
+          console.log(`Using ${dbName}`);
+              
+          // Create users table
+          conn.query(QUERIES.createTableUsers, function(err, results) {
             if (err) {
-              if (err.code === 'ER_DUP_ENTRY') {
-                console.log('Guest user already exists');
-              } else throw err;
+              console.log('Cannot create Users table');
+              reject(err);
             }
-          });
-          conn.query(QUERIES.InsertNewUser, [ 'Admin', 'password', null, null, true ], function(err, results) {
-            if (err) {
-              if (err.code === 'ER_DUP_ENTRY') {
-                console.log('Admin user already exists');
-              } else throw err;
-            }
-          });
 
+            // Create logs table
+            conn.query(QUERIES.createTableLogs, function(err, results) {
+              if (err) {
+                console.log('Cannot create Logs table');
+                reject(err);
+              }
+        
+              // Create faqs table
+              conn.query(QUERIES.createTableFAQs, function(err, results) {
+                if (err) {
+                  console.log('Cannot create FAQs table');
+                  reject(err);
+                }
+                
+                resolve();
+              });
+            });
+
+            // Create one admin and guest user for testing
+            conn.query(QUERIES.InsertNewUser, [ 'John', 'password', null, null, false ], function(err, results) {
+              if (err) {
+                if (err.code === 'ER_DUP_ENTRY') {
+                  console.log('Guest user already exists');
+                } else reject(err);
+              }
+            });
+            conn.query(QUERIES.InsertNewUser, [ 'Admin', 'password', null, null, true ], function(err, results) {
+              if (err) {
+                if (err.code === 'ER_DUP_ENTRY') {
+                  console.log('Admin user already exists');
+                } else reject(err);
+              }
+            });
+          });
         });
-      }
-
+      });
     });
 
-    // Check if faqs table exists
-    conn.query('SELECT * FROM faqs LIMIT 1', function(err, results) {
-      
-      if (err) {
-        // Create faqs table
-        conn.query(QUERIES.createTableFAQs, function(err, results) {
-          if (err) throw err;
-          console.log('FAQs table created');
-        });
-      }
-
-    });
-  }
-  console.log(`Using ${DB_NAME}`);
-});
+  // End promise
+  });
+}
 
 module.exports = {
   connection: pool.promise(),
-  queries: QUERIES
+  queries: QUERIES,
+  setUpDB: setUpDB
 };

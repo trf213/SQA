@@ -36,13 +36,15 @@ router.post('/guest', (req, res) => {
   
   db.query(Q.checkUser, [ guestID, password, false ])
     .then(function([rows, fieldData]) {
-      console.log(rows);
-
-      if (rows.length > 0)
-      {
+      if (rows.length > 0) {
         req.session.userID = guestID;
+
         res.redirect('/login/security');
-      } else res.redirect('/login/guest');
+      } else {
+        res.status(401).json({
+          error: 'Invalid credentials'
+        });
+      }
     })
     .catch(function(err) {
       res.end();
@@ -71,15 +73,18 @@ router.post('/security', (req, res) => {
 router.post('/admin', (req, res) => {
   const adminID = req.body.name;
   const password = req.body.password;
-  console.log(req.body);
+
   db.query(Q.checkUser, [ adminID, password, true ])
     .then(function([rows, fieldData]) {
-      console.log(rows);
-      if (rows.length > 0)
-      {
+      if (rows.length > 0) {
         req.session.userID = adminID;
+
         res.redirect('/homeadmin');
-      } else res.redirect('/login/admin');
+      } else {
+        res.status(401).json({
+          error: 'Invalid credentials'
+        });
+      }
     })
     .catch(function(err) {
       res.end();

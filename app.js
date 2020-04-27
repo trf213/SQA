@@ -6,9 +6,11 @@ const path = require('path');
 const rootDir = require('./utils/path');
 const loginRoutes = require('./routes/login');
 const faqRoutes = require('./routes/faq');
+const db = require('./utils/database');
 
 const app = express();
 const port = process.env.PORT || 3000;
+db.setUpDB();
 
 
 app.use(express.static(path.join(rootDir, 'public')));
@@ -123,4 +125,4 @@ app.get('/contactadmin',function(req,res) {
 
 
 
-app.listen(port, ()=>console.log(`Listening on port ${port}`));
+module.exports = app.listen(port, ()=>console.log(`Listening on port ${port}`));

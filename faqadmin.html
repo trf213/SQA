@@ -113,44 +113,32 @@
 
 <section>
     <div class="container">
-        <div class="row">
-            <div class="col p-5 ml-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-10 col-12 py-5">
+                <h2 class="h5 mb-5">Add More <b>FAQ</b> Questions Below</h2>
 
-                <h2 class="h5 mb-3">Add More <b>FAQ</b> Questions Below</h2>
-                <br>
-                <form class="mb-4" action="/faq/add" method="POST">
-                    <div class="form-row mb-4">
-                        <div class="col-lg mb-md-0">
-                
+                <div class="faq-form">
+                    <form class="mb-4 justify-content-center" action="/faq/add" method="POST">
+                        <div class="mb-md-0">
                             <div class="form-group mb-3">
                                 <label for="question">Question:</label>
-                                <input type="text" name="question" id="question" class="form-control">
-                                    
+                                <input type="text" name="question" id="question" class="form-control"> 
                             </div>
-                            <div class="form-group mb-3 w-100">
+                            <div class="form-group mb-3">
                                 <label for="answer">Answer :</label>
                                 <br>
                                 <textarea class="form-control" name="answer" id="answer" cols="70" rows="5" ></textarea>
-                                
                             </div>
                         </div>
-                        <div class="col-sm"></div>
-                    </div>
-                
-                    <div class="form-row mt-4">
-                        <div class="col">
+                        <div class="form-row mt-4">
                             <button class="btn btn-success ml-2 px-4" type="submit">Save Changes</button>
                             <div class="d-sm-none">
                                 <br>
                             </div>
-                            <button class="btn btn-success ml-2 px-4" type="cancel"> Cancel </button>
+                            <button class="btn btn-success ml-2 px-4" type="cancel">Cancel</button>
                         </div>
-                    </div>
-                </form>
-                
+                    </form>
                 </div>
-
-
 
             </div>
         </div>
@@ -160,23 +148,6 @@
 
 
 <!-- End of Add FAQ -->
-
-<section>
-    <div class="container d-lg-none">
-        <div class="row">
-            <div class="col px-5 pb-5 text-center">
-
-                <h5 class=" mb-3">Admin Log Out Below</h5>
-
-                <div class="form-row mt-4"></div>
-                <div class="col">
-                    <a href="/login/logout" class="btn btn-success ml-2 px-4" type="submit">Log Out</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
 
 
 
