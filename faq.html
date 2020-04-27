@@ -60,10 +60,10 @@
                 <a class="nav-item nav-link" href="/contact">Contact Us</a>
             </div>
             <span class="navbar-text ">
-                <form class="form-inline">
-                    <a href="./login/logout" class="btn logbutton" type="button">
+                <form class="form-inline" action="/login/logout">
+                    <button class="btn logbutton" type="submit">
                         <i class="far fa-user"></i> Log Out
-                    </a>
+                    </button>
                 </form>
             </span>
         </div>
@@ -91,16 +91,30 @@
             <a class="nav-item nav-link" href="/contact">Contact Us</a>
         </div>
         <span class="navbar-text ">
-            <form class="form-inline">
-                <a href="./login/logout" class="btn logbutton" type="button">
-                    <i class="far fa-user"></i> Log Out</a>
+            <form class="form-inline" action="/login/logout">
+                <button class="btn logbutton" type="submit">
+                    <i class="far fa-user"></i> Log Out
+                </button>
             </form>
         </span>
     </div>
 </nav>
 
 <section id="root" class="accordbar clearfix mt-3 px-5 pt-2" aria-label="List Sectons">
-    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h2 class="text-uppercase font-weight-bold">Frequently Asked Questions</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-12">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <hr />
@@ -115,7 +129,7 @@
                 
                     <div class="form-row mt-4"></div>
                         <div class="col">
-                            <a href="./login/logout" class="btn btn-success ml-2 px-4" type="submit">Log Out</a>
+                            <a href="/login/logout" class="btn btn-success ml-2 px-4" type="submit">Log Out</a>
                         </div>
 
             </div>
