@@ -5,34 +5,49 @@ const DB_NAME = 'hospitalDB';
 const connConfig = {
   host: 'localhost',
   user: 'root',
-  password: 'password',
+  password: '',
   database: '',
 };
 
+const poolConfig = {
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: DB_NAME,
+}
+
 const QUERIES = {
   useDB: `USE ${DB_NAME}`,
-  createDB: `CREATE DATABASE ${DB_NAME}`,
-  createTableUsers: 'CREATE TABLE users (userID VARCHAR(255), password VARCHAR(20) NOT NULL, name VARCHAR(255), child VARCHAR(255), isAdmin BOOL NOT NULL, PRIMARY KEY (userID))',
-  createTableFAQs: 'CREATE TABLE faqs (quesID INT AUTO_INCREMENT, ques VARCHAR(255) NOT NULL, answer MEDIUMTEXT NOT NULL, PRIMARY KEY (quesID))',
-  createTableLogs: 'CREATE TABLE user_logs (logID INT AUTO_INCREMENT, userID VARCHAR(255) NOT NULL, isLoggedIn BOOL NOT NULL, timestamp TIMESTAMP, PRIMARY KEY (logID), FOREIGN KEY (userID) REFERENCES users(userID))',
+  createDB: `CREATE DATABASE IF NOT EXISTS ${DB_NAME}`,
+  createTableUsers: 'CREATE TABLE IF NOT EXISTS users (userID VARCHAR(255), password VARCHAR(20) NOT NULL, name VARCHAR(255), child VARCHAR(255), isAdmin BOOL NOT NULL, PRIMARY KEY (userID))',
+  createTableFAQs: 'CREATE TABLE IF NOT EXISTS faqs (quesID INT AUTO_INCREMENT, ques VARCHAR(255) NOT NULL, answer MEDIUMTEXT NOT NULL, PRIMARY KEY (quesID))',
+  createTableLogs: 'CREATE TABLE IF NOT EXISTS user_logs (logID INT AUTO_INCREMENT, userID VARCHAR(255) NOT NULL, isLoggedIn BOOL NOT NULL, timestamp TIMESTAMP, PRIMARY KEY (logID), FOREIGN KEY (userID) REFERENCES users(userID))',
   InsertNewUser:`INSERT INTO users (userID, password, name, child, isAdmin) VALUES (?,?,?,?,?)`,
   UpdateGuestUser:`UPDATE users SET  name = ?, child = ? WHERE userID = ?`,
   checkUser: `SELECT * FROM users WHERE userID = ? AND password = ? AND isAdmin = ?`,
-  checkAdminUser: `SELECT * FROM users WHERE name = ? AND password = ? AND isAdmin = ?`,
-  Insertfaq: `INSERT INTO faqs (quesID, ques, answer) VALUES (?,?,?)`,
-  Checkfaq: `SELECT * FROM faqs`
+  insertFAQ: `INSERT INTO faqs (ques, answer) VALUES (?, ?)`,
+  getFAQs: `SELECT * FROM faqs`
 }
 
-// Connect to SQL server
+// Create SQL connection pool
+const pool = sql.createPool(poolConfig);
+pool.on('connect', function() {
+  console.log('Connected to SQL server');
+});
+pool.on('error', function(err) {
+  console.error('Something went wrong with SQL server');
+  throw err;
+});
+
+// Create connection to perform DB setup
 const conn = sql.createConnection(connConfig);
 conn.on('connect', function() {
   console.log('Connected to SQL server');
 });
 conn.on('error', function(err) {
-  console.error('Cannot connect to SQL server');
+  console.error('Something went wrong with SQL server');
   throw err;
 });
-
 
 // Switch to DB
 conn.query(QUERIES.useDB, function(err, results) {
@@ -51,7 +66,7 @@ conn.query(QUERIES.useDB, function(err, results) {
     });
 
     // Check if users table exists
-    conn.query('SELECT * FROM users LIMIT 1', function(err, resuls) {
+    conn.query('SELECT * FROM users LIMIT 1', function(err, results) {
 
       if (err) {
         // Create users table
@@ -100,12 +115,9 @@ conn.query(QUERIES.useDB, function(err, results) {
     });
   }
   console.log(`Using ${DB_NAME}`);
-
-  
-  
 });
 
 module.exports = {
-  connection: conn,
+  connection: pool.promise(),
   queries: QUERIES
 };

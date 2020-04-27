@@ -8,12 +8,7 @@ const router = express.Router();
 const db = database.connection;
 const Q = database.queries;
 
-const querystring = require('querystring');
-
-
-
 router.get('/guest',function(req,res) {
- 
   res.sendFile(path.join(rootDir, 'login.html'));
 });
 
@@ -34,62 +29,62 @@ router.get('/logout', function(req,res){
   }
     
 });
+
 router.post('/guest', (req, res) => {
   const guestID = req.body.guestID;
   const password = req.body.password;
-  console.log(req.body);
-  db.query(Q.checkUser, [ guestID, password, 0 ], function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    if(result.length > 0)
-    {
-      
-      req.session.userID = guestID;
-      console.log(req.session.userID );
-      res.redirect(`/login/security`);
-    }else res.redirect('/login/guest');
-  });
+  
+  db.query(Q.checkUser, [ guestID, password, false ])
+    .then(function([rows, fieldData]) {
+      console.log(rows);
 
- 
+      if (rows.length > 0)
+      {
+        req.session.userID = guestID;
+        res.redirect('/login/security');
+      } else res.redirect('/login/guest');
+    })
+    .catch(function(err) {
+      res.end();
+      throw err;
+    });
 });
 
 router.post('/security', (req, res) => {
   const guestName  = req.body.gname;
   const childName  = req.body.cname;
  
-  db.query(Q.UpdateGuestUser, [  guestName, childName, req.session.userID], function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    if(result.length > 0)
-    {
-      
-      res.redirect('/home');
-    }
-    res.redirect('/home');
-  });
-
-  
-
-
+  db.query(Q.UpdateGuestUser, [ guestName, childName, req.session.userID ])
+    .then(function([rows, fieldData]) {
+      console.log(rows);
+      if (rows.affectedRows > 0)
+      {
+        res.redirect('/home');
+      } else res.redirect('/login/security/');
+    })
+    .catch(function(err) {
+      res.end();
+      throw err;
+    });
 });
 
 router.post('/admin', (req, res) => {
   const adminID = req.body.name;
   const password = req.body.password;
   console.log(req.body);
-  db.query(Q.checkUser, [ adminID, password, 1 ], function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    if(result.length > 0)
-    {
-      
-      req.session.userID = adminID;
-      console.log(req.session.userID );
-      res.redirect(`/homeadmin`);
-    }else res.redirect('/login/admin');
-  });
-
- 
+  db.query(Q.checkUser, [ adminID, password, true ])
+    .then(function([rows, fieldData]) {
+      console.log(rows);
+      if (rows.length > 0)
+      {
+        req.session.userID = adminID;
+        res.redirect('/homeadmin');
+      } else res.redirect('/login/admin');
+    })
+    .catch(function(err) {
+      res.end();
+      throw err;
+    });
 });
 
 module.exports = router;

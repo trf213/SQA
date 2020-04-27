@@ -8,46 +8,47 @@ const router = express.Router();
 const db = database.connection;
 const Q = database.queries;
 
-const querystring = require('querystring');
-
 router.get('/guest', (req,res)=>{
-    if(req.session.userID === undefined)
+    if(req.session.userID === undefined) {
         res.redirect('/');
-    res.sendFile(path.join(rootDir, 'faq.html'));
+    } else {
+        res.sendFile(path.join(rootDir, 'faq.html'));
+    }
 });
 
 router.get('/admin', (req,res)=>{
-    if(req.session.userID === undefined)
+    if(req.session.userID === undefined) {
         res.redirect('/');
-    res.sendFile(path.join(rootDir, 'faqadmin.html'));
+    } else {
+        res.sendFile(path.join(rootDir, 'faqadmin.html'));
+    }
 });
-
 
 router.post('/add', (req,res) =>{
     let question =  req.body.question;
     let answer = req.body.answer;
     
-    db.query(Q.Insertfaq, [0, question, answer], function(err, result) {
-        if (err) throw err;
-        console.log(result);
-       
-        
-        
-        res.redirect('/faq/admin');
-      });
-   
-   
+    db.query(Q.insertFAQ, [question, answer])
+        .then(function([rows, fieldData]) {
+            console.log(rows);
+            res.redirect('/faq/admin');
+        })
+        .catch(function(err) {
+            res.end();
+            throw err;
+        });
 });
 
 router.get('/select', (req,res)=>{
-    db.query(Q.Checkfaq, function(err, result) {
-        if (err) throw err;
-        console.log(result);
-        res.send(result );
-        
-        
-      
-      });
-    
+    db.query(Q.getFAQs)
+        .then(function([rows, fieldData]) {
+            console.log(rows);
+            res.send(rows);
+        })
+        .catch(function(err) {
+            res.end();
+            throw err;
+        });
 });
+
 module.exports = router;

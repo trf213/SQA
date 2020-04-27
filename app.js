@@ -26,78 +26,100 @@ app.use('/faq', faqRoutes);
 
 // Index Routes
 app.get('/',function(req,res) {
-  
     res.sendFile(path.join(rootDir, 'index.html'));
 });
 app.get('/index',function(req,res) {
-  
     res.sendFile(path.join(rootDir, 'index.html'));
 });
 
 app.get('/home',function(req,res) {
-  if(req.session.userID === undefined)
+  if (req.session.userID === undefined) {
     res.redirect('/');
-  res.sendFile(path.join(rootDir, 'home.html'));
+  } else {
+    res.sendFile(path.join(rootDir, 'home.html'));
+  }
 });
 
 app.get('/homeadmin',function(req,res) {
-    if(req.session.userID === undefined)
-      res.redirect('/');
+  if (req.session.userID === undefined) {
+    res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'homeadmin.html'));
-  });
+  }
+});
 
-  app.get('/ward',function(req,res) {
-    if(req.session.userID === undefined)
+app.get('/ward',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'ward.html'));
-  });
+  }
+});
 
-  app.get('/services',function(req,res) {
-    if(req.session.userID === undefined)
+app.get('/services',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'services.html'));
-  });
-  app.get('/visit',function(req,res) {
-    if(req.session.userID === undefined)
+  }
+});
+app.get('/visit',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'visit.html'));
-  });
-  app.get('/news',function(req,res) {
-    if(req.session.userID === undefined)
+  }
+});
+app.get('/news',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'news.html'));
-  });
-  app.get('/contact',function(req,res) {
-    if(req.session.userID === undefined)
+  }
+});
+app.get('/contact',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'contact.html'));
-  });
-  app.get('/wardadmin',function(req,res) {
-    if(req.session.userID === undefined)
+  }
+});
+app.get('/wardadmin',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'wardadmin.html'));
-  });
+  }
+});
 
-  app.get('/servicesadmin',function(req,res) {
-    if(req.session.userID === undefined)
+app.get('/servicesadmin',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'servicesadmin.html'));
-  });
-  app.get('/visitadmin',function(req,res) {
-    if(req.session.userID === undefined)
+  }
+});
+app.get('/visitadmin',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'visitadmin.html'));
-  });
-  app.get('/newsadmin',function(req,res) {
-    if(req.session.userID === undefined)
+  }
+});
+app.get('/newsadmin',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'newsadmin.html'));
-  });
-  app.get('/contactadmin',function(req,res) {
-    if(req.session.userID === undefined)
+  }
+});
+app.get('/contactadmin',function(req,res) {
+  if(req.session.userID === undefined) {
     res.redirect('/');
+  } else {
     res.sendFile(path.join(rootDir, 'contactadmin.html'));
-  });
+  }
+});
 
 
 
