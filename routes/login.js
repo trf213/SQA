@@ -65,7 +65,7 @@ router.post('/security', (req, res) => {
       
       res.redirect('/home');
     }
-    else res.end();
+    res.redirect('/home');
   });
 
   
