@@ -53,7 +53,7 @@ router.post('/guest', (req, res) => {
  
 });
 
-router.post('/security/:user', (req, res) => {
+router.post('/security', (req, res) => {
   const guestName  = req.body.gname;
   const childName  = req.body.cname;
  
@@ -62,13 +62,15 @@ router.post('/security/:user', (req, res) => {
     console.log(result);
     if(result.length > 0)
     {
+      
       res.redirect('/home');
     }
+    else res.end();
   });
 
   
 
-  res.redirect('/home');
+
 });
 
 router.post('/admin', (req, res) => {
@@ -80,12 +82,14 @@ router.post('/admin', (req, res) => {
     console.log(result);
     if(result.length > 0)
     {
-      res.redirect('/homeadmin');
+      
+      req.session.userID = adminID;
+      console.log(req.session.userID );
+      res.redirect(`/homeadmin`);
     }else res.redirect('/login/admin');
   });
-     res.end;
 
-  
+ 
 });
 
 module.exports = router;
