@@ -56,6 +56,13 @@ router.post('/guest', (req, res) => {
 router.post('/security', (req, res) => {
   const guestName  = req.body.gname;
   const childName  = req.body.cname;
+
+  const errors = checkGuestSecurityInput(guestName, childName);
+
+  if (errors.length > 0) {
+    res.status(401).json({ error: errors });
+    return;
+  }
  
   db.query(Q.UpdateGuestUser, [ guestName, childName, req.session.userID ])
     .then(function([rows, fieldData]) {
@@ -94,5 +101,25 @@ router.post('/admin', (req, res) => {
       throw err;
     });
 });
+
+
+// Helper functions
+const checkGuestSecurityInput = function(guestName, childName) {
+  const errors = [];
+  if (guestName.length === 0) {
+    errors.push('Guest name cannot be empty');
+  }
+  if (childName.length === 0) {
+    errors.push('Child name cannot be empty');
+  }
+  if (guestName.length > 20) {
+    errors.push('Guest name must be less than 20 characters');
+  }
+  if (childName.length > 20) {
+    errors.push('Child name must be less than 20 characters');
+  }
+  
+  return errors;
+}
 
 module.exports = router;

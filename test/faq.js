@@ -1,10 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const mysql = require('mysql2');
 
 const app = require('../app');
 const db = require('../utils/database');
-const rootDir = require('../utils/path');
 
 const expect = chai.expect;
 const conn = db.connection;
@@ -22,15 +20,13 @@ describe('TEST GET FAQ', () => {
   before((done) => {
     db.setUpDB('test')
       .then(() => done())
-      .catch((err) => {
-        throw err;
-      });
+      .catch((err) => done(err));
   });
 
   beforeEach((done) => {
     for ({ques, answer} of testFAQs) {
       conn.query(Q.insertFAQ, [ ques, answer ])
-        .catch((err) => { throw err; });
+        .catch((err) => done(err));
     }
     done();
   })
@@ -38,17 +34,13 @@ describe('TEST GET FAQ', () => {
   after((done) => {
     conn.query(`DROP DATABASE test`)
       .then(() => done())
-      .catch((err) => {
-        throw err;
-      });
+      .catch((err) => done(err));
   });
 
   afterEach((done) => {
     conn.query(`DELETE FROM faqs`)
       .then(() => done())
-      .catch((err) => {
-        throw err;
-      });
+      .catch((err) => done(err));
   })
 
   it ('should get all FAQs from database', (done) => {
