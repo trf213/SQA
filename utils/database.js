@@ -14,14 +14,16 @@ const QUERIES = {
   createDB: `CREATE DATABASE IF NOT EXISTS ${DB_NAME}`,
   createTableUsers: 'CREATE TABLE IF NOT EXISTS users (userID VARCHAR(255), password VARCHAR(20) NOT NULL, name VARCHAR(255), child VARCHAR(255), isAdmin BOOL NOT NULL, PRIMARY KEY (userID))',
   createTableFAQs: 'CREATE TABLE IF NOT EXISTS faqs (quesID INT AUTO_INCREMENT, ques VARCHAR(255) NOT NULL, answer MEDIUMTEXT NOT NULL, PRIMARY KEY (quesID))',
-  createTableLogs: 'CREATE TABLE IF NOT EXISTS user_logs (logID INT AUTO_INCREMENT, userID VARCHAR(255) NOT NULL, isLoggedIn BOOL NOT NULL, timestamp TIMESTAMP, PRIMARY KEY (logID), FOREIGN KEY (userID) REFERENCES users(userID))',
+  createTableLogs: 'CREATE TABLE IF NOT EXISTS user_logs (logID INT AUTO_INCREMENT, userID VARCHAR(255) NOT NULL, isLoggedIn BOOL NOT NULL, timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (logID), FOREIGN KEY (userID) REFERENCES users(userID))',
   InsertNewUser:`INSERT INTO users (userID, password, name, child, isAdmin) VALUES (?,?,?,?,?)`,
   UpdateGuestUser:`UPDATE users SET  name = ?, child = ? WHERE userID = ?`,
-  UpdateLogs:`INSERT INTO user_logs (userID, isloggedIn, timestamp) values (?,?,?)`,
+  UpdateLogs:`INSERT INTO user_logs (userID, isloggedIn) values (?,?)`,
+  UpdateLog: `UPDATE user_logs SET isloggedIn = false WHERE userID = ?`,
   checkUser: `SELECT * FROM users WHERE userID = ? AND password = ? AND isAdmin = ?`,
   insertFAQ: `INSERT INTO faqs (ques, answer) VALUES (?, ?)`,
   getFAQs: `SELECT * FROM faqs`,
-  UserType: `SELECT * FROM users where userID = ? and isAdmin = ?`
+  UserType: `SELECT * FROM users where userID = ? and isAdmin = ?`,
+  
 }
 
 // Create SQL connection pool
