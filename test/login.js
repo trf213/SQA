@@ -52,6 +52,26 @@ describe('TEST GUEST LOGIN /login/guest', () => {
         done();
       })
   });
+
+  it ('should save guest information and redirect to home page', (done) => {
+    const requestBody = { gname: 'John', cname: 'Cena' };
+    const agent = chai.request.agent(app);
+
+    agent.post('/login/guest')
+      .send({ guestID: 'John', password: 'password' })
+      .type('form')
+      .then((res) => {
+        agent.post('/login/security')
+          .send(requestBody)
+          .type('form')
+          .end((err, response) => {
+            console.log(response.body);
+            expect(response).to.have.status(200);
+            expect('Location', 'logns');
+            done();
+      });
+    });
+  });
   
 });
 

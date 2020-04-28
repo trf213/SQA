@@ -42,7 +42,7 @@ router.post('/guest', (req, res) => {
         res.redirect('/login/security');
       } else {
         res.status(401).json({
-          error: 'Invalid credentials'
+          error: 'Invalid credentials. Either guest ID or password is incorrect.'
         });
       }
     })
@@ -55,14 +55,19 @@ router.post('/guest', (req, res) => {
 router.post('/security', (req, res) => {
   const guestName  = req.body.gname;
   const childName  = req.body.cname;
+
+  console.log({session_userID: req.session.userID});
  
   db.query(Q.UpdateGuestUser, [ guestName, childName, req.session.userID ])
     .then(function([rows, fieldData]) {
       console.log(rows);
-      if (rows.affectedRows > 0)
-      {
+      if (rows.affectedRows > 0) {
         res.redirect('/home');
-      } else res.redirect('/login/security/');
+      } else {
+        res.status(401).json({
+          error: 'Something went wrong on saving guest information'
+        });
+      }
     })
     .catch(function(err) {
       res.end();
@@ -82,7 +87,7 @@ router.post('/admin', (req, res) => {
         res.redirect('/homeadmin');
       } else {
         res.status(401).json({
-          error: 'Invalid credentials'
+          error: 'Invalid credentials. Either staff ID or password is incorrect.'
         });
       }
     })

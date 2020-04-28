@@ -43,7 +43,7 @@ router.get('/select', (req,res)=>{
     db.query(Q.getFAQs)
         .then(function([rows, fieldData]) {
             console.log(rows);
-            res.send(rows);
+            res.status(200).send(rows);
         })
         .catch(function(err) {
             res.end();
