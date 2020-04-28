@@ -2,35 +2,34 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 
 const app = require('../app');
-const db = require('../utils/database');
+const db = require('../utils/test-database');
 
 const port = process.env.PORT || 3000;
 const expect = chai.expect;
-const conn = db.testConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'test',
-});
+const conn = db.connection;
 const Q = db.queries;
 
 chai.use(chaiHttp);
 
 describe('TEST USER LOGIN [POST /login/guest && POST /login/admin]', () => {
   before((done) => {
-    db.setUpDB('test')
+    db.setUpDB()
       .then(() => done())
       .catch((err) => done(err));
   });
 
   after((done) => {
-    conn.query(`DROP DATABASE test`)
+    conn.query(Q.dropTableFAQs)
       .then(() => {
-        app.close(() => done());
+        conn.query(Q.dropTableLogs)
+          .then(() => {
+            conn.query(Q.dropTableUsers)
+              .then(() => done())
+              .catch((err) => done(err));
+          })
+          .catch((err) => done(err));
       })
-      .catch((err) => {
-        app.close(() => done(err));
-      });
+      .catch((err) => done(err));
   });
 
   it ('should login guest user with correct credentials and redirect to security page', (done) => {
@@ -88,7 +87,7 @@ describe('TEST GUEST NAME AND CHILD NAME INPUTS [POST /login/security]', () => {
 
   before((done) => {
     app.listen(port);
-    db.setUpDB('test')
+    db.setUpDB()
       .then(() => {
         agent.post('/login/guest')
           .send(loginInfo)
@@ -100,13 +99,21 @@ describe('TEST GUEST NAME AND CHILD NAME INPUTS [POST /login/security]', () => {
   });
 
   after((done) => {
-    conn.query(`DROP DATABASE test`)
-    .then(() => {
-      app.close(() => done());
-    })
-    .catch((err) => {
-      app.close(() => done(err));
-    });
+    conn.query(Q.dropTableFAQs)
+      .then(() => {
+        conn.query(Q.dropTableLogs)
+          .then(() => {
+            conn.query(Q.dropTableUsers)
+              .then(() => {
+                app.close(() => done());
+              })
+              .catch((err) => {
+                app.close(() => done(err));
+              });
+          })
+          .catch((err) => done(err));
+      })
+      .catch((err) => done(err));
   });
 
   it ('should fail to save guest information when guest name or child name is empty', (done) => {

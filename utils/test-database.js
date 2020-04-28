@@ -1,6 +1,6 @@
 const sql = require('mysql2');
 
-const DB_NAME = 'hospitalDB';
+const DB_NAME = 'testDB';
 
 const poolConfig = {
   host: 'localhost',
@@ -24,9 +24,9 @@ const QUERIES = {
   insertFAQ: `INSERT INTO faqs (ques, answer) VALUES (?, ?)`,
   getFAQs: `SELECT * FROM faqs`,
   UserType: `SELECT * FROM users where userID = ? and isAdmin = ?`,
-  dropTableUsers: 'DROP TABLE USERS',
-  dropTableLogs: 'DROP TABLE LOGS',
-  dropTableFAQs: 'DROP TABLE FAQs'
+  dropTableUsers: 'DROP TABLE users',
+  dropTableLogs: 'DROP TABLE user_logs',
+  dropTableFAQs: 'DROP TABLE faqs'
 }
 
 // Create SQL connection pool
@@ -51,7 +51,7 @@ const setUpDB = function() {
     // Create connection to perform DB setup
     const conn = sql.createConnection(connConfig)
     conn.on('error', (err) => {
-      // conn.destroy();
+      conn.destroy();
       throw err;
     });
 

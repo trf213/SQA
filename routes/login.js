@@ -2,7 +2,11 @@ const express = require('express');
 const path = require('path');
 const time = require('express-timestamp')
 
-const database = require('../utils/database');
+let databasePath = '../utils/database';
+if (process.env.NODE_ENV === 'test') {
+  databasePath = '../utils/test-database';
+}
+const database = require(databasePath);
 const rootDir = require('../utils/path');
 
 const router = express.Router();
