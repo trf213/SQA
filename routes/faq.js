@@ -12,7 +12,20 @@ router.get('/guest', (req,res)=>{
     if(req.session.userID === undefined) {
         res.redirect('/');
     } else {
-        res.sendFile(path.join(rootDir, 'faq.html'));
+        db.query(Q.UserType, [ req.session.userID, 0])
+        .then(function([rows, fieldData]) {
+          if (rows.length > 0) {
+            
+    
+            res.sendFile(path.join(rootDir, 'faq.html'));
+          } else {
+            res.redirect('/homeadmin');
+          }
+        })
+        .catch(function(err) {
+          res.end();
+          throw err;
+        });
     }
 });
 
@@ -20,7 +33,20 @@ router.get('/admin', (req,res)=>{
     if(req.session.userID === undefined) {
         res.redirect('/');
     } else {
+        db.query(Q.UserType, [ req.session.userID, 1 ])
+    .then(function([rows, fieldData]) {
+      if (rows.length > 0) {
+        
+
         res.sendFile(path.join(rootDir, 'faqadmin.html'));
+      } else {
+        res.redirect('/home');
+      }
+    })
+    .catch(function(err) {
+      res.end();
+      throw err;
+    });
     }
 });
 

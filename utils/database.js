@@ -5,7 +5,7 @@ const DB_NAME = 'hospitalDB';
 const poolConfig = {
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: 'password',
   database: DB_NAME,
 }
 
@@ -17,9 +17,11 @@ const QUERIES = {
   createTableLogs: 'CREATE TABLE IF NOT EXISTS user_logs (logID INT AUTO_INCREMENT, userID VARCHAR(255) NOT NULL, isLoggedIn BOOL NOT NULL, timestamp TIMESTAMP, PRIMARY KEY (logID), FOREIGN KEY (userID) REFERENCES users(userID))',
   InsertNewUser:`INSERT INTO users (userID, password, name, child, isAdmin) VALUES (?,?,?,?,?)`,
   UpdateGuestUser:`UPDATE users SET  name = ?, child = ? WHERE userID = ?`,
+  UpdateLogs:`INSERT INTO user_logs (userID, isloggedIn, timestamp) values (?,?,?)`,
   checkUser: `SELECT * FROM users WHERE userID = ? AND password = ? AND isAdmin = ?`,
   insertFAQ: `INSERT INTO faqs (ques, answer) VALUES (?, ?)`,
-  getFAQs: `SELECT * FROM faqs`
+  getFAQs: `SELECT * FROM faqs`,
+  UserType: `SELECT * FROM users where userID = ? and isAdmin = ?`
 }
 
 // Create SQL connection pool
@@ -37,7 +39,7 @@ const setUpDB = function(dbName = DB_NAME) {
     const connConfig = {
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: 'password',
       database: '',
     };
 
