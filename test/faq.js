@@ -5,7 +5,12 @@ const app = require('../app');
 const db = require('../utils/database');
 
 const expect = chai.expect;
-const conn = db.connection;
+const conn = db.testConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'test',
+});
 const Q = db.queries;
 
 chai.use(chaiHttp);
