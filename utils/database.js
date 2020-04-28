@@ -5,7 +5,7 @@ const DB_NAME = 'hospitalDB';
 const poolConfig = {
   host: 'localhost',
   user: 'root',
-  password: 'password',
+  password: '',
   database: DB_NAME,
 }
 
@@ -39,7 +39,7 @@ const setUpDB = function(dbName = DB_NAME) {
     const connConfig = {
       host: 'localhost',
       user: 'root',
-      password: 'password',
+      password: '',
       database: '',
     };
 

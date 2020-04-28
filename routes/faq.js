@@ -56,7 +56,6 @@ router.post('/add', (req,res) =>{
     
     db.query(Q.insertFAQ, [question, answer])
         .then(function([rows, fieldData]) {
-            console.log(rows);
             res.redirect('/faq/admin');
         })
         .catch(function(err) {

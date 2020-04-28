@@ -6,11 +6,11 @@ const app = require('../app');
 const db = require('../utils/database');
 const rootDir = require('../utils/path');
 
-chai.use(chaiHttp);
-
 const expect = chai.expect;
 const conn = db.connection;
 const Q = db.queries;
+
+chai.use(chaiHttp);
 
 describe('TEST GUEST LOGIN /login/guest', () => {
   before((done) => {
@@ -65,7 +65,6 @@ describe('TEST GUEST LOGIN /login/guest', () => {
           .send(requestBody)
           .type('form')
           .end((err, response) => {
-            console.log(response.body);
             expect(response).to.have.status(200);
             expect('Location', 'logns');
             done();
