@@ -3,7 +3,8 @@ const url = '/faq/select';
 fetch(url)
 .then(response => response.json())
 .then(function(data) {
-  for(var i = 0; i < data.length; i++)
+  console.log(data.faq[0]);
+  for(var i = 0; i < data.faq.length; i++)
   {
     let accordion =  document.getElementById('accordion');
     let col = document.createElement('div').setAttribute('id','col-sm-12');
@@ -15,13 +16,16 @@ fetch(url)
             <h3 class="line-name">
                 <a class="collapsed text-dark" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                     href="#collapse${i}" aria-expanded="true" aria-controls="collapse${i}">
-                    ${data[i]['ques']}
+                    ${data.faq[i]['ques']}
                 </a>
             </h3>
         </div>
         <div id="collapse${i}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="line2">
             <div class="panel-body px-3 mb-4">
-                <p>${data[i]['answer']}</p>
+                <p>${data.faq[i]['answer']}
+                <br> ${data.faq_log[i]['action']}: ${data.faq_log[i]['timestamp']}
+                </p>
+                <a href= "/faq/edit">Edit</a>
             </div>
         </div>
     </div>`;

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FAQs - ServeYou Hospital</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- font awesome -->
+    <script defer src="/js/all.js"></script>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+
+    <link href="/css/feather.css" rel="stylesheet" type="text/css">
+
+    <!--  Style CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- FAQ CSS -->
+    <link rel="stylesheet" href="/css/faq.css">
+
+</head>
+
+<body>
+  
+
+
+<!-- Add FAQ -->
+
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-10 col-12 py-5">
+                <h2 class="h5 mb-5">Edit <b>FAQ</b> </h2>
+
+                <div class="faq-form">
+                    <form class="mb-4 justify-content-center" action="/faq/add" method="POST">
+                        <div class="mb-md-0">
+                            <div class="form-group mb-3">
+                                <label for="question">Question:</label>
+                                <input type="text" name="question" id="question" class="form-control"> 
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="answer">Answer :</label>
+                                <br>
+                                <textarea class="form-control" name="answer" id="answer" cols="70" rows="5" ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row mt-4">
+                            <button class="btn btn-success ml-2 px-4" type="submit">Save Changes</button>
+                            <div class="d-sm-none">
+                                <br>
+                            </div>
+                            <button class="btn btn-success ml-2 px-4" type="cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+   
+
+
+<!-- End of Add FAQ -->
+
+
+
+   
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

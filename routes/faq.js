@@ -56,7 +56,13 @@ router.post('/add', (req,res) =>{
     
     db.query(Q.insertFAQ, [question, answer])
         .then(function([rows, fieldData]) {
-            console.log(rows);
+            db.query(Q.insertFAQLOG,[rows['insertId'], req.session.userID, "Created" ] )
+            .catch((err) => 
+            {
+              res.end();
+              throw err;
+            });
+           console.log(rows[0]);
             res.redirect('/faq/admin');
         })
         .catch(function(err) {
@@ -65,11 +71,35 @@ router.post('/add', (req,res) =>{
         });
 });
 
+router.get('/edit', (req,res)=>{
+  if(req.session.userID === undefined) {
+    res.redirect('/');
+} else {
+    db.query(Q.UserType, [ req.session.userID, 1 ])
+.then(function([rows, fieldData]) {
+  if (rows.length > 0) {
+ 
+    
+
+    res.sendFile(path.join(rootDir, 'editfaq.html'));
+  } else {
+    res.redirect('/home');
+  }
+})
+.catch(function(err) {
+  res.end();
+  throw err;
+});
+}
+});
 router.get('/select', (req,res)=>{
     db.query(Q.getFAQs)
         .then(function([rows, fieldData]) {
             console.log(rows);
-            res.send(rows);
+            db.query(Q.getFAQLOGs).then(function([logrows,fieldData]){
+              res.json({faq:rows,faq_log:logrows});
+            });
+            
         })
         .catch(function(err) {
             res.end();

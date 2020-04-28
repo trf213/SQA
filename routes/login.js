@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const time = require('express-timestamp')
+
 
 const database = require('../utils/database');
 const rootDir = require('../utils/path');
@@ -9,7 +9,7 @@ const router = express.Router();
 const db = database.connection;
 const Q = database.queries;
 
-express().use(time.init);
+
 router.get('/guest',function(req,res) {
   
   res.sendFile(path.join(rootDir, 'login.html'));
