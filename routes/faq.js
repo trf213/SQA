@@ -74,7 +74,6 @@ router.get('/select', (req,res)=>{
   } else {
     db.query(Q.getFAQs)
       .then(function([rows, fieldData]) {
-        console.log(rows);
         res.status(200).send(rows);
       })
       .catch(function(err) {

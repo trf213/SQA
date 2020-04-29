@@ -46,11 +46,7 @@ router.post('/guest', (req, res) => {
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         req.session.userID = guestID;
-<<<<<<< HEAD
         db.query(Q.UpdateLogs, [ rows[0].userID, true ]);
-=======
-        db.query(Q.UpdateLogs, [  ]);
->>>>>>> 95c64ddc12da63862fe5b72c62b5ba72fb865c5c
         res.redirect('/login/security');
       } else {
         res.status(401).json({
