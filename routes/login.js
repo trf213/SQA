@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
- 
+const time = require('express-timestamp')
 
 const database = require('../utils/database');
 const rootDir = require('../utils/path');
@@ -9,7 +9,9 @@ const router = express.Router();
 const db = database.connection;
 const Q = database.queries;
 
+express().use(time.init);
 router.get('/guest',function(req,res) {
+  
   res.sendFile(path.join(rootDir, 'login.html'));
 });
 
@@ -24,6 +26,7 @@ router.get('/security',function(req,res) {
 router.get('/logout', function(req,res){
   if(req.session)
   {
+    db.query(Q.UpdateLog, [ req.session.userID]);
     req.session.destroy();
    
     res.redirect('/')
@@ -39,7 +42,7 @@ router.post('/guest', (req, res) => {
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         req.session.userID = guestID;
-
+        db.query(Q.UpdateLogs, [  ]);
         res.redirect('/login/security');
       } else {
         res.status(401).json({
@@ -88,7 +91,8 @@ router.post('/admin', (req, res) => {
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         req.session.userID = adminID;
-
+        db.query(Q.UpdateLogs, [ adminID, true ]);
+        
         res.redirect('/homeadmin');
       } else {
         res.status(401).json({
