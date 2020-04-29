@@ -1,7 +1,11 @@
 const express = require('express');
 const path = require('path');
 
-const database = require('../utils/database');
+let databasePath = '../utils/database';
+if (process.env.NODE_ENV === 'test') {
+  databasePath = '../utils/test-database';
+}
+const database = require(databasePath);
 const rootDir = require('../utils/path');
 
 const router = express.Router();
@@ -10,7 +14,7 @@ const Q = database.queries;
 
 router.get('/guest', (req,res)=>{
     if(req.session.userID === undefined) {
-        res.redirect('/');
+        res.redirect(302, '/');
     } else {
         db.query(Q.UserType, [ req.session.userID, 0])
         .then(function([rows, fieldData]) {
@@ -93,6 +97,9 @@ router.get('/edit', (req,res)=>{
 }
 });
 router.get('/select', (req,res)=>{
+  if (req.session.userID === undefined) {
+    res.redirect('/');
+  } else {
     db.query(Q.getFAQs)
         .then(function([rows, fieldData]) {
             console.log(rows);
@@ -105,6 +112,7 @@ router.get('/select', (req,res)=>{
             res.end();
             throw err;
         });
+    }
 });
 
 module.exports = router;

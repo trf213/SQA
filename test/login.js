@@ -1,32 +1,35 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const mysql = require('mysql2');
 
 const app = require('../app');
-const db = require('../utils/database');
-const rootDir = require('../utils/path');
+const db = require('../utils/test-database');
 
-chai.use(chaiHttp);
-
+const port = process.env.PORT || 3000;
 const expect = chai.expect;
 const conn = db.connection;
 const Q = db.queries;
 
-describe('TEST GUEST LOGIN /login/guest', () => {
+chai.use(chaiHttp);
+
+describe('TEST USER LOGIN [POST /login/guest && POST /login/admin]', () => {
   before((done) => {
-    db.setUpDB('test')
+    db.setUpDB()
       .then(() => done())
-      .catch((err) => {
-        throw err;
-      });
+      .catch((err) => done(err));
   });
 
   after((done) => {
-    conn.query(`DROP DATABASE test`)
-      .then(() => done())
-      .catch((err) => {
-        throw err;
-      });
+    conn.query(Q.dropTableFAQs)
+      .then(() => {
+        conn.query(Q.dropTableLogs)
+          .then(() => {
+            conn.query(Q.dropTableUsers)
+              .then(() => done())
+              .catch((err) => done(err));
+          })
+          .catch((err) => done(err));
+      })
+      .catch((err) => done(err));
   });
 
   it ('should login guest user with correct credentials and redirect to security page', (done) => {
@@ -52,25 +55,6 @@ describe('TEST GUEST LOGIN /login/guest', () => {
         done();
       })
   });
-  
-});
-
-describe('TEST ADMIN LOGIN /login/admin', () => {
-  before((done) => {
-    db.setUpDB('test')
-      .then(() => done())
-      .catch((err) => {
-        throw err;
-      });
-  });
-
-  after((done) => {
-    conn.query(`DROP DATABASE test`)
-      .then(() => done())
-      .catch((err) => {
-        throw err;
-      });
-  });
 
   it ('should login admin user with correct credentials and redirect to security page', (done) => {
     const requestBody = { name: 'Admin', password: 'password' };
@@ -94,4 +78,132 @@ describe('TEST ADMIN LOGIN /login/admin', () => {
         done();
       });
   });
+
+});
+
+describe('TEST GUEST NAME AND CHILD NAME INPUTS [POST /login/security]', () => {
+  const agent = chai.request.agent(app);
+  const loginInfo = { guestID: 'John', password: 'password' };
+
+  before((done) => {
+    app.listen(port);
+    db.setUpDB()
+      .then(() => {
+        agent.post('/login/guest')
+          .send(loginInfo)
+          .type('form')
+          .then(() => done())
+          .catch((err) => done(err));
+      })
+      .catch((err) => done(err));
+  });
+
+  after((done) => {
+    conn.query(Q.dropTableFAQs)
+      .then(() => {
+        conn.query(Q.dropTableLogs)
+          .then(() => {
+            conn.query(Q.dropTableUsers)
+              .then(() => {
+                app.close(() => done());
+              })
+              .catch((err) => {
+                app.close(() => done(err));
+              });
+          })
+          .catch((err) => done(err));
+      })
+      .catch((err) => done(err));
+  });
+
+  it ('should fail to save guest information when guest name or child name is empty', (done) => {
+    const requestBody = { gname: '', cname: '' };
+    
+    agent.post('/login/security')
+      .send(requestBody)
+      .type('form')
+      .end((err, response) => {
+        const responseBody = response.body;
+        expect(response).to.have.status(401);
+        expect(responseBody).to.have.property('error');
+        expect(responseBody.error.length).to.be.equal(2);
+        done();
+      });
+  });
+
+  it ('should save guest information and redirect to home page when guest name and child name are 1 character long', (done) => {
+    const requestBody = { gname: 'J', cname: 'C' };
+
+    agent.post('/login/security')
+      .send(requestBody)
+      .type('form')
+      .end((err, response) => {
+        expect(response).to.have.status(200);
+        done();
+      });
+  });
+
+  it ('should save guest information and redirect to home page when guest name and child name are 2 characters long', (done) => {
+    const requestBody = { gname: 'Jo', cname: 'Ce' };
+
+    agent.post('/login/security')
+      .send(requestBody)
+      .type('form')
+      .end((err, response) => {
+        expect(response).to.have.status(200);
+        done();
+      });
+  });
+
+  it ('should save guest information and redirect to home page when guest name and child name are 10 characters long', (done) => {
+    const requestBody = { gname: 'John Brown', cname: 'Cena Brown' };
+
+    agent.post('/login/security')
+      .send(requestBody)
+      .type('form')
+      .end((err, response) => {
+        expect(response).to.have.status(200);
+        done();
+      });
+  });
+
+  it ('should save guest information and redirect to home page when guest name and child name are 19 characters long', (done) => {
+    const requestBody = { gname: 'John Brown Hamilton', cname: 'Cena Brown Hamilton' };
+
+    agent.post('/login/security')
+      .send(requestBody)
+      .type('form')
+      .end((err, response) => {
+        expect(response).to.have.status(200);
+        done();
+      });
+  });
+
+  it ('should save guest information and redirect to home page when guest name and child name are 20 characters long', (done) => {
+    const requestBody = { gname: 'John Brown Hamiltons', cname: 'Cena Brown Hamiltons' };
+
+    agent.post('/login/security')
+      .send(requestBody)
+      .type('form')
+      .end((err, response) => {
+        expect(response).to.have.status(200);
+        done();
+      });
+  });
+
+  it ('should fail to save guest information when guest name or child name is more than 20 characters long', (done) => {
+    const requestBody = { gname: 'John Brown Hamiltons Jr.', cname: 'Cena Brown Hamiltons Jr.' };
+    
+    agent.post('/login/security')
+      .send(requestBody)
+      .type('form')
+      .end((err, response) => {
+        const responseBody = response.body;
+        expect(response).to.have.status(401);
+        expect(responseBody).to.have.property('error');
+        expect(responseBody.error.length).to.be.equal(2);
+        done();
+      });
+  });
+
 });
