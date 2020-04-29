@@ -19,12 +19,16 @@ describe('TEST USER LOGIN [POST /login/guest && POST /login/admin]', () => {
   });
 
   after((done) => {
-    conn.query(Q.dropTableFAQs)
+    conn.query(Q.dropTableFAQLogs)
       .then(() => {
-        conn.query(Q.dropTableLogs)
+        conn.query(Q.dropTableFAQs)
           .then(() => {
-            conn.query(Q.dropTableUsers)
-              .then(() => done())
+            conn.query(Q.dropTableLogs)
+              .then(() => {
+                conn.query(Q.dropTableUsers)
+                  .then(() => done())
+                  .catch((err) => done(err));
+              })
               .catch((err) => done(err));
           })
           .catch((err) => done(err));
@@ -51,13 +55,13 @@ describe('TEST USER LOGIN [POST /login/guest && POST /login/admin]', () => {
       .end((err, response) => {
         expect(response).to.have.status(401);
         expect('Location', '/login/guest');
-        expect(response.body).to.have.property('error');
+        expect(response.body).to.have.property('errors');
         done();
       })
   });
 
   it ('should login admin user with correct credentials and redirect to security page', (done) => {
-    const requestBody = { name: 'Admin', password: 'password' };
+    const requestBody = { adminID: 'Admin', password: 'password' };
     chai.request(app).post('/login/admin')
       .send(requestBody)
       .type('form')
@@ -68,13 +72,13 @@ describe('TEST USER LOGIN [POST /login/guest && POST /login/admin]', () => {
   });
 
   it ('should fail to login admin user with incorrect credentials and redirect back to admin login page', (done) => {
-    const requestBody = { name: 'Karl', password: 'lake' };
+    const requestBody = { adminID: 'Karl', password: 'lake' };
     chai.request(app).post('/login/admin')
       .send(requestBody)
       .type('form')
       .end((err, response) => {
         expect(response).to.have.status(401);
-        expect(response.body).to.have.property('error');
+        expect(response.body).to.have.property('errors');
         done();
       });
   });
@@ -99,17 +103,17 @@ describe('TEST GUEST NAME AND CHILD NAME INPUTS [POST /login/security]', () => {
   });
 
   after((done) => {
-    conn.query(Q.dropTableFAQs)
+    conn.query(Q.dropTableFAQLogs)
       .then(() => {
-        conn.query(Q.dropTableLogs)
+        conn.query(Q.dropTableFAQs)
           .then(() => {
-            conn.query(Q.dropTableUsers)
+            conn.query(Q.dropTableLogs)
               .then(() => {
-                app.close(() => done());
+                conn.query(Q.dropTableUsers)
+                  .then(() => done())
+                  .catch((err) => done(err));
               })
-              .catch((err) => {
-                app.close(() => done(err));
-              });
+              .catch((err) => done(err));
           })
           .catch((err) => done(err));
       })
@@ -125,8 +129,8 @@ describe('TEST GUEST NAME AND CHILD NAME INPUTS [POST /login/security]', () => {
       .end((err, response) => {
         const responseBody = response.body;
         expect(response).to.have.status(401);
-        expect(responseBody).to.have.property('error');
-        expect(responseBody.error.length).to.be.equal(2);
+        expect(responseBody).to.have.property('errors');
+        expect(responseBody.errors.length).to.be.equal(2);
         done();
       });
   });
@@ -200,8 +204,8 @@ describe('TEST GUEST NAME AND CHILD NAME INPUTS [POST /login/security]', () => {
       .end((err, response) => {
         const responseBody = response.body;
         expect(response).to.have.status(401);
-        expect(responseBody).to.have.property('error');
-        expect(responseBody.error.length).to.be.equal(2);
+        expect(responseBody).to.have.property('errors');
+        expect(responseBody.errors.length).to.be.equal(2);
         done();
       });
   });

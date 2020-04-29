@@ -30,7 +30,7 @@ router.get('/security',function(req,res) {
 router.get('/logout', function(req,res){
   if(req.session)
   {
-    db.query(Q.UpdateLog, [ req.session.userID]);
+    db.query(Q.updateUserLog, [ req.session.userID]);
     req.session.destroy();
    
     res.redirect('/')
@@ -41,16 +41,23 @@ router.get('/logout', function(req,res){
 router.post('/guest', (req, res) => {
   const guestID = req.body.guestID;
   const password = req.body.password;
+
+  const errors = checkUserIdAndPassword(guestID, password);
+  if (errors.length > 0) {
+    res.status(401).json({ errors: errors });
+    return;
+  }
   
   db.query(Q.checkUser, [ guestID, password, false ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         req.session.userID = guestID;
-        db.query(Q.UpdateLogs, [ rows[0].userID, true ]);
-        res.redirect('/login/security');
+        db.query(Q.insertNewUserLog, [ guestID, true ]);
+        res.redirect(302, '/login/security');
       } else {
+        errors.push('Invalid credentials. Either staff ID or password is incorrect.');
         res.status(401).json({
-          error: 'Invalid credentials. Either guest ID or password is incorrect.'
+          errors: errors
         });
       }
     })
@@ -61,24 +68,28 @@ router.post('/guest', (req, res) => {
 });
 
 router.post('/security', (req, res) => {
+  if(req.session.userID === undefined) {
+    res.redirect('/');
+    return;
+  }
+
   const guestName  = req.body.gname;
   const childName  = req.body.cname;
 
   const errors = checkGuestSecurityInput(guestName, childName);
 
   if (errors.length > 0) {
-    res.status(401).json({ error: errors });
+    res.status(401).json({ errors: errors });
     return;
   }
  
-  db.query(Q.UpdateGuestUser, [ guestName, childName, req.session.userID ])
+  db.query(Q.updateGuestUser, [ guestName, childName, req.session.userID ])
     .then(function([rows, fieldData]) {
       if (rows.affectedRows > 0) {
         res.redirect('/home');
       } else {
-        res.status(401).json({
-          error: 'Something went wrong on saving guest information'
-        });
+        errors.push('Something went wrong on saving guest information');
+        res.status(401).json({ errors: errors });
       }
     })
     .catch(function(err) {
@@ -88,20 +99,25 @@ router.post('/security', (req, res) => {
 });
 
 router.post('/admin', (req, res) => {
-  const adminID = req.body.name;
+  const adminID = req.body.adminID;
   const password = req.body.password;
+
+  const errors = checkUserIdAndPassword(adminID, password);
+  if (errors.length > 0) {
+    res.status(401).json({ errors: errors });
+    return;
+  }
 
   db.query(Q.checkUser, [ adminID, password, true ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         req.session.userID = adminID;
-        db.query(Q.UpdateLogs, [ adminID, true ]);
+        db.query(Q.insertNewUserLog, [ adminID, true ]);
         
-        res.redirect('/homeadmin');
+        res.redirect(302, '/homeadmin');
       } else {
-        res.status(401).json({
-          error: 'Invalid credentials. Either staff ID or password is incorrect.'
-        });
+        errors.push('Invalid credentials. Either staff ID or password is incorrect.');
+        res.status(401).json({ errors: errors });
       }
     })
     .catch(function(err) {
@@ -112,19 +128,32 @@ router.post('/admin', (req, res) => {
 
 
 // Helper functions
+const checkUserIdAndPassword = function(userID, password) {
+  const errors = [];
+
+  if (password.length <= 6) {
+    errors.push('Password must be at least 6 characters.');
+  }
+  if (password.length > 20) {
+    errors.push('Password must be less than 20 characters.');
+  }
+
+  return errors;
+}
+
 const checkGuestSecurityInput = function(guestName, childName) {
   const errors = [];
   if (guestName.length === 0) {
-    errors.push('Guest name cannot be empty');
+    errors.push('Guest name cannot be empty.');
   }
   if (childName.length === 0) {
-    errors.push('Child name cannot be empty');
+    errors.push('Child name cannot be empty.');
   }
   if (guestName.length > 20) {
-    errors.push('Guest name must be less than 20 characters');
+    errors.push('Guest name must be less than 20 characters.');
   }
   if (childName.length > 20) {
-    errors.push('Child name must be less than 20 characters');
+    errors.push('Child name must be less than 20 characters.');
   }
   
   return errors;

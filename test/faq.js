@@ -45,12 +45,16 @@ describe('TEST GET FAQ', () => {
   });
 
   after((done) => {
-    conn.query(Q.dropTableFAQs)
+    conn.query(Q.dropTableFAQLogs)
       .then(() => {
-        conn.query(Q.dropTableLogs)
+        conn.query(Q.dropTableFAQs)
           .then(() => {
-            conn.query(Q.dropTableUsers)
-              .then(() => done())
+            conn.query(Q.dropTableLogs)
+              .then(() => {
+                conn.query(Q.dropTableUsers)
+                  .then(() => done())
+                  .catch((err) => done(err));
+              })
               .catch((err) => done(err));
           })
           .catch((err) => done(err));
@@ -74,28 +78,28 @@ describe('TEST GET FAQ', () => {
       .type('form')
       .then((res) => {
         agent.get('/faq/guest')
-          .end((err, response) => {
-            expect(response).to.have.status(200);
-          });
+          .then((err, response) => {
+            expect(res).to.have.status(200);
 
-        agent.get('/faq/select')
-          .end((err, response) => {
-            const faqs = response.body;
-            expect(faqs.length).to.be.above(0);
-            expect(faqs.length).to.be.equal(testFAQs.length);
-            
-            for (let i = 0; i < testFAQs.length; i++) {
-              expect(faqs[i].ques).to.be.equal(testFAQs[i].ques);
-              expect(faqs[i].answer).to.be.equal(testFAQs[i].answer);
-            }
-            done();
+            agent.get('/faq/select')
+              .end((err, response) => {
+                const faqs = response.body.faq;
+                expect(faqs.length).to.be.above(0);
+                expect(faqs.length).to.be.equal(testFAQs.length);
+                
+                for (let i = 0; i < testFAQs.length; i++) {
+                  expect(faqs[i].ques).to.be.equal(testFAQs[i].ques);
+                  expect(faqs[i].answer).to.be.equal(testFAQs[i].answer);
+                }
+                done();
+              });
           });
       });
   });
 
   it ('should get all FAQs from database when logged in as admin user', (done) => {
     agent.post('/login/admin')
-      .send({name: 'Admin', password: 'password'})
+      .send({adminID: 'Admin', password: 'password'})
       .type('form')
       .then((res) => {
         agent.get('/faq/admin')
@@ -104,7 +108,8 @@ describe('TEST GET FAQ', () => {
 
             agent.get('/faq/select')
               .end((err, response) => {
-                const faqs = response.body;
+                console.log(response.body);
+                const faqs = response.body.faq;
                 expect(faqs.length).to.be.above(0);
                 expect(faqs.length).to.be.equal(testFAQs.length);
                 

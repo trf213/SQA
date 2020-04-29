@@ -24,6 +24,7 @@ const Q = database.queries;
 app.use(express.static(path.join(rootDir, 'public')));
 app.use(express.static(path.join(rootDir, 'webfonts')));
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 app.use(time.init);
 app.use(session({
   secret: 'I hate it here',
@@ -47,21 +48,20 @@ app.get('/home',function(req,res) {
   if (req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 0 ])
-    .then(function([rows, fieldData]) {
-      if (rows.length > 0) {
-        
+    db.query(Q.userType, [ req.session.userID, false ])
+      .then(function([rows, fieldData]) {
+        if (rows.length > 0) {
+          
 
-        res.sendFile(path.join(rootDir, 'home.html'));
-      } else {
-        res.redirect('/homeadmin');
-      }
-    })
-    .catch(function(err) {
-      res.end();
-      throw err;
-    });
-
+          res.sendFile(path.join(rootDir, 'home.html'));
+        } else {
+          res.redirect('/homeadmin');
+        }
+      })
+      .catch(function(err) {
+        res.end();
+        throw err;
+      });
   }
 });
 
@@ -69,20 +69,20 @@ app.get('/homeadmin',function(req,res) {
   if (req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 1 ])
-    .then(function([rows, fieldData]) {
-      if (rows.length > 0) {
-        
+    db.query(Q.userType, [ req.session.userID, true ])
+      .then(function([rows, fieldData]) {
+        if (rows.length > 0) {
+          
 
-        res.sendFile(path.join(rootDir, 'homeadmin.html'));
-      } else {
-        res.redirect('/home');
-      }
-    })
-    .catch(function(err) {
-      res.end();
-      throw err;
-    });
+          res.sendFile(path.join(rootDir, 'homeadmin.html'));
+        } else {
+          res.redirect('/home');
+        }
+      })
+      .catch(function(err) {
+        res.end();
+        throw err;
+      });
   }
 });
 
@@ -90,7 +90,7 @@ app.get('/ward',function(req,res) {
   if(req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 0 ])
+    db.query(Q.userType, [ req.session.userID, 0 ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
@@ -112,7 +112,7 @@ app.get('/services',function(req,res) {
   if(req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 0 ])
+    db.query(Q.userType, [ req.session.userID, 0 ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
@@ -132,7 +132,7 @@ app.get('/visit',function(req,res) {
   if(req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 0 ])
+    db.query(Q.userType, [ req.session.userID, 0 ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
@@ -153,7 +153,7 @@ app.get('/news',function(req,res) {
     res.redirect('/');
   } else {
 
-    db.query(Q.UserType, [ req.session.userID, 0 ])
+    db.query(Q.userType, [ req.session.userID, 0 ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
@@ -173,7 +173,7 @@ app.get('/contact',function(req,res) {
   if(req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 0 ])
+    db.query(Q.userType, [ req.session.userID, 0 ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
@@ -193,7 +193,7 @@ app.get('/wardadmin',function(req,res) {
   if(req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 1 ])
+    db.query(Q.userType, [ req.session.userID, true ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
@@ -214,7 +214,7 @@ app.get('/servicesadmin',function(req,res) {
   if(req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 1 ])
+    db.query(Q.userType, [ req.session.userID, true ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
@@ -234,7 +234,7 @@ app.get('/visitadmin',function(req,res) {
   if(req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 1 ])
+    db.query(Q.userType, [ req.session.userID, true ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
@@ -254,7 +254,7 @@ app.get('/newsadmin',function(req,res) {
   if(req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 1 ])
+    db.query(Q.userType, [ req.session.userID, true ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
@@ -274,7 +274,7 @@ app.get('/contactadmin',function(req,res) {
   if(req.session.userID === undefined) {
     res.redirect('/');
   } else {
-    db.query(Q.UserType, [ req.session.userID, 1 ])
+    db.query(Q.userType, [ req.session.userID, true ])
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         
