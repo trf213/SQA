@@ -22,7 +22,7 @@ router.use((req, res, next) => {
 })
 
 router.get('/guest', (req,res)=>{
-  db.query(Q.userType, [ req.session.userID, 0])
+  db.query(Q.userType, [ req.session.userID, false])
   .then(function([rows, fieldData]) {
     if (rows.length > 0) {
       res.sendFile(path.join(rootDir, 'faq.html'));
@@ -36,16 +36,13 @@ router.get('/guest', (req,res)=>{
   });
 });
 
-router.get('/admin', (req,res)=>{
-  db.query(Q.userType, [ req.session.userID, 1 ])
-    .then(function([rows, fieldData]) {
-      if (rows.length > 0) {
+router.get('/select', (req,res)=>{
+  db.query(Q.getFAQs)
+    .then(([rows, fieldData]) => {
+      db.query(Q.getMostRecentFAQLogs).then(function([logrows,fieldData]){
+        res.status(200).json({faq: rows, faq_log: logrows});
+      });
         
-
-        res.sendFile(path.join(rootDir, 'faqadmin.html'));
-      } else {
-        res.redirect('/home');
-      }
     })
     .catch(function(err) {
       res.end();
@@ -53,15 +50,41 @@ router.get('/admin', (req,res)=>{
     });
 });
 
+
+/** PREVENT ACCESS TO ADMIN ROUTES IF NOT AN ADMIN */
+router.use((req, res, next) => {
+  db.query(Q.userType, [ req.session.userID, true ])
+    .then(([rows, fieldData]) => {
+      if (rows.length === 0) {
+        return res.redirect('/home');
+      }
+      
+      // If user is found and is admin user, process admin routes
+      next();
+    })
+    .catch((err) => {
+      res.end();
+      throw err;
+    });
+})
+
+router.get('/admin', (req,res) => {
+    res.sendFile(path.join(rootDir, 'faqadmin.html'));
+});
+
 router.post('/add', (req,res) =>{
-  let question = req.body.question;
-  let answer = req.body.answer;
+  const ques = req.body.ques;
+  const answer = req.body.answer;
+
+  const errors = checkQuesAndAnswer(ques, answer);
+  if (errors.length > 0) {
+    return res.status(401).json({ errors: errors });
+  }
   
-  db.query(Q.insertFAQ, [question, answer])
+  db.query(Q.insertFAQ, [ques, answer])
     .then(function([insertResult, fieldData]) {
       db.query(Q.getLastCreatedFAQ)
         .then(function([rows, fieldData]) {
-          console.log(rows);
           db.query(Q.insertFAQLog, [ rows[0].quesID, req.session.userID, "Created" ])
             .catch((err) => {
               res.end();
@@ -78,35 +101,38 @@ router.post('/add', (req,res) =>{
 });
 
 router.get('/edit', (req,res)=>{
-  db.query(Q.userType, [ req.session.userID, 1 ])
-    .then(function([rows, fieldData]) {
-      if (rows.length > 0) {
-    
-        
+  const ques = req.body.ques;
+  const answer = req.body.answer;
 
-        res.sendFile(path.join(rootDir, 'editfaq.html'));
-      } else {
-        res.redirect('/home');
-      }
-    })
-    .catch(function(err) {
-      res.end();
-      throw err;
-    });
+  const errors = checkQuesAndAnswer(ques, answer);
+  if (errors.length > 0) {
+    return res.status(401).json({ errors: errors });
+  }
 
+  res.sendFile(path.join(rootDir, 'editfaq.html'));
 });
-router.get('/select', (req,res)=>{
-  db.query(Q.getFAQs)
-    .then(([rows, fieldData]) => {
-      db.query(Q.getMostRecentFAQLogs).then(function([logrows,fieldData]){
-        res.status(200).json({faq: rows, faq_log: logrows});
-      });
-        
-    })
-    .catch(function(err) {
-      res.end();
-      throw err;
-    });
-});
+
+// Helper functions
+const checkQuesAndAnswer = function(ques, answer) {
+  const errors = [];
+
+  if (ques.length <= 0) {
+    errors.push('Question cannot be empty');
+  }
+  if (answer.length <= 0) {
+    errors.push('Answer cannot be empty');
+  }
+
+  const regex = /^[A-Za-z]/;
+  
+  if (!regex.test(ques)) {
+    errors.push('Question must start with an alphabetical character (A-Z or a-z)');
+  }
+  if (!regex.test(answer)) {
+    errors.push('Answer must start with an alphabetical character (A-Z or a-z)');
+  }
+
+  return errors;
+}
 
 module.exports = router;

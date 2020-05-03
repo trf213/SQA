@@ -143,6 +143,7 @@ const checkUserIdAndPassword = function(userID, password) {
 
 const checkGuestSecurityInput = function(guestName, childName) {
   const errors = [];
+
   if (guestName.length === 0) {
     errors.push('Guest name cannot be empty.');
   }
@@ -155,7 +156,16 @@ const checkGuestSecurityInput = function(guestName, childName) {
   if (childName.length > 20) {
     errors.push('Child name must be less than 20 characters.');
   }
+
+  const regex = /^[A-Za-z]/;
   
+  if (!regex.test(guestName)) {
+    errors.push('Guest name must start with an alphabetical character (A-Z or a-z)');
+  }
+  if (!regex.test(childName)) {
+    errors.push('Child name must start with an alphabetical character (A-Z or a-z)');
+  }
+
   return errors;
 }
 

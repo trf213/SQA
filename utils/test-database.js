@@ -30,8 +30,12 @@ const QUERIES = {
   getFAQLogs: `SELECT * FROM faq_logs`,
   getMostRecentFAQLogs: `SELECT * FROM (SELECT * FROM faq_logs GROUP BY quesID ORDER BY quesID DESC) as recentLogs order by quesID`,
   userType: `SELECT * FROM users where userID = ? AND isAdmin = ?`,
+  clearTableUsers: 'DELETE FROM users',
+  clearTableFAQs: 'DELETE FROM faqs',
+  clearTableFAQLogs: 'DELETE FROM faq_logs',
+  clearTableUserLogs: 'DELETE FROM user_logs',
   dropTableUsers: 'DROP TABLE users',
-  dropTableLogs: 'DROP TABLE user_logs',
+  dropTableUserLogs: 'DROP TABLE user_logs',
   dropTableFAQs: 'DROP TABLE faqs',
   dropTableFAQLogs: 'DROP TABLE faq_logs'
 }
@@ -112,16 +116,16 @@ const setUpDB = function() {
             // Create one admin and guest user for testing
             conn.query(QUERIES.insertNewUser, [ 'John', 'password', null, null, false ], function(err, results) {
               if (err) {
-                if (err.code === 'ER_DUP_ENTRY') {
-                  console.log('Guest user already exists');
-                } else reject(err);
+                if (err.code !== 'ER_DUP_ENTRY') {
+                  reject(err);
+                }
               }
             });
             conn.query(QUERIES.insertNewUser, [ 'Admin', 'password', null, null, true ], function(err, results) {
               if (err) {
-                if (err.code === 'ER_DUP_ENTRY') {
-                  console.log('Admin user already exists');
-                } else reject(err);
+                if (err.code !== 'ER_DUP_ENTRY') {
+                  reject(err);
+                }
               }
             });
           });
