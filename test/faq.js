@@ -108,7 +108,6 @@ describe('TEST GET FAQ', () => {
 
             agent.get('/faq/select')
               .end((err, response) => {
-                console.log(response.body);
                 const faqs = response.body.faq;
                 expect(faqs.length).to.be.above(0);
                 expect(faqs.length).to.be.equal(testFAQs.length);

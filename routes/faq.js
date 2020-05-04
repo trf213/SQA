@@ -61,7 +61,6 @@ router.post('/add', (req,res) =>{
     .then(function([insertResult, fieldData]) {
       db.query(Q.getLastCreatedFAQ)
         .then(function([rows, fieldData]) {
-          console.log(rows);
           db.query(Q.insertFAQLog, [ rows[0].quesID, req.session.userID, "Created" ])
             .catch((err) => {
               res.end();
