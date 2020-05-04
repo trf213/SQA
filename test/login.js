@@ -120,7 +120,7 @@ describe('ECP TEST: User Login [POST /login/guest && POST /login/admin]', () => 
       });
   });
 
-  it ('should login guest user and redirect to security page when guest ID and password are valid', (done) => {
+  it ('should login guest user and redirect to security route when guest ID and password are valid', (done) => {
     const requestBody = { guestID: 'John', password: 'password' };
     chai.request(app).post('/login/guest')
       .send(requestBody)
@@ -219,7 +219,7 @@ describe('ECP TEST: User Login [POST /login/guest && POST /login/admin]', () => 
       });
   });
 
-  it ('should login admin user and redirect to admin homepage when admin ID and password are valid', (done) => {
+  it ('should login admin user and redirect to admin home route when admin ID and password are valid', (done) => {
     const requestBody = { adminID: 'Admin', password: 'password' };
     chai.request(app).post('/login/admin')
       .send(requestBody)
@@ -229,7 +229,7 @@ describe('ECP TEST: User Login [POST /login/guest && POST /login/admin]', () => 
 
         expect(response).to.have.status(200);
         expect(response.body).to.not.have.property('errors');
-        expect(response.redirects[0]).to.contain('/homeadmin');
+        expect(response.redirects[0]).to.contain('/home');
         done();
       });
   });
@@ -243,15 +243,23 @@ describe('ECP TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
   before((done) => {
     app.listen(port);
     db.setUpDB()
-      .then(() => {
-        agent.post('/login/guest')
-          .send(loginInfo)
-          .type('form')
-          .then(() => done())
-          .catch((err) => done(err));
-      })
+      .then(() => done())
       .catch((err) => done(err));
   });
+
+  beforeEach((done) => {
+    agent.post('/login/guest')
+      .send(loginInfo)
+      .type('form')
+      .then(() => done())
+      .catch((err) => done(err));
+  });
+
+  afterEach((done) => {
+    agent.get('/login/logout')
+      .then(() => done())
+      .catch((err) => done(err));
+  })
 
   after((done) => {
     conn.query(Q.dropTableFAQLogs)
@@ -435,15 +443,23 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
   before((done) => {
     app.listen(port);
     db.setUpDB()
-      .then(() => {
-        agent.post('/login/guest')
-          .send(loginInfo)
-          .type('form')
-          .then(() => done())
-          .catch((err) => done(err));
-      })
+      .then(() => done())
       .catch((err) => done(err));
   });
+
+  beforeEach((done) => {
+    agent.post('/login/guest')
+      .send(loginInfo)
+      .type('form')
+      .then(() => done())
+      .catch((err) => done(err));
+  });
+
+  afterEach((done) => {
+    agent.get('/login/logout')
+      .then(() => done())
+      .catch((err) => done(err));
+  })
 
   after((done) => {
     conn.query(Q.dropTableFAQLogs)
@@ -481,7 +497,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when guest name is 1 character long', (done) => {
+  it ('should pass security and redirect to guest home route when guest name is 1 character long', (done) => {
     const requestBody = { gname: 'F', cname: 'Mario Halls' };
 
     agent.post('/login/security')
@@ -497,7 +513,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when guest name is 2 characters long', (done) => {
+  it ('should pass security and redirect to guest home route when guest name is 2 characters long', (done) => {
     const requestBody = { gname: 'Fi', cname: 'Mario Halls' };
 
     agent.post('/login/security')
@@ -513,7 +529,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when guest name is 10 characters long', (done) => {
+  it ('should pass security and redirect to guest home route when guest name is 10 characters long', (done) => {
     const requestBody = { gname: 'Fiona Hall', cname: 'Mario Halls' };
 
     agent.post('/login/security')
@@ -529,7 +545,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when guest name is 19 characters long', (done) => {
+  it ('should pass security and redirect to guest home route when guest name is 19 characters long', (done) => {
     const requestBody = { gname: 'Fiona Halls Richard', cname: 'Mario Halls' };
 
     agent.post('/login/security')
@@ -545,7 +561,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when guest name is 20 characters long', (done) => {
+  it ('should pass security and redirect to guest home route when guest name is 20 characters long', (done) => {
     const requestBody = { gname: 'Fiona Halls Richards', cname: 'Mario Halls' };
 
     agent.post('/login/security')
@@ -591,7 +607,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when child name is 1 character long', (done) => {
+  it ('should pass security and redirect to guest home route when child name is 1 character long', (done) => {
     const requestBody = { gname: 'Fiona Halls', cname: 'M' };
 
     agent.post('/login/security')
@@ -607,7 +623,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when child name is 2 characters long', (done) => {
+  it ('should pass security and redirect to guest home route when child name is 2 characters long', (done) => {
     const requestBody = { gname: 'Fiona Halls', cname: 'Ma' };
 
     agent.post('/login/security')
@@ -623,7 +639,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when child name is 10 characters long', (done) => {
+  it ('should pass security and redirect to guest home route when child name is 10 characters long', (done) => {
     const requestBody = { gname: 'Fiona Halls', cname: 'Mario Hall' };
 
     agent.post('/login/security')
@@ -639,7 +655,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when child name is 19 characters long', (done) => {
+  it ('should pass security and redirect to guest home route when child name is 19 characters long', (done) => {
     const requestBody = { gname: 'Fiona Halls', cname: 'Mario Halls Richard' };
 
     agent.post('/login/security')
@@ -655,7 +671,7 @@ describe('BVA TEST: Guest Name and Child Name Inputs [POST /login/security]', ()
       });
   });
 
-  it ('should pass security and redirect to guest homepage when child name is 20 characters long', (done) => {
+  it ('should pass security and redirect to guest home route when child name is 20 characters long', (done) => {
     const requestBody = { gname: 'Fiona Halls', cname: 'Mario Halls Richards' };
 
     agent.post('/login/security')

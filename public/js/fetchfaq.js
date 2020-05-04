@@ -12,7 +12,7 @@ fetch(url)
         let row = document.createElement('div').setAttribute('id','row');
         let container = document.createElement('div').setAttribute('id','container');
 
-        if (windowUrl.includes('/faq/guest')) {
+        if (windowUrl.includes('/faq')) {
           accordion.innerHTML += 
             `<div class="panel initial-line">
                 <div class="line-header p-3 mb-3" role="tab" id="line2">
@@ -29,7 +29,7 @@ fetch(url)
                     </div>
                 </div>
             </div>`;
-        } else if (windowUrl.includes('/faq/admin')) {
+        } else if (windowUrl.includes('/faq')) {
           accordion.innerHTML += 
             `<div class="panel initial-line">
                 <div class="line-header p-3 mb-3" role="tab" id="line2">

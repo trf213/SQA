@@ -19,7 +19,7 @@ const testFAQs = [
   { ques: 'What can I do to make myself comfortable', answer: 'Bring some headphones and wait patiently in the waiting room' }
 ];
 
-describe('PAGE TEST: View FAQs [GET /faq/guest && GET /faq/admin]', () => {
+describe('ROUTE TEST: Get FAQs [GET /faq && GET /faq]', () => {
   before((done) => {
     db.setUpDB()
       .then(() => done())
@@ -92,8 +92,8 @@ describe('PAGE TEST: View FAQs [GET /faq/guest && GET /faq/admin]', () => {
             expect(res).to.have.status(200);
             expect(res.redirects[0]).to.contain('/home');
             
-            // Go to the FAQ page
-            agent.get('/faq/guest')
+            // Go to the FAQ route
+            agent.get('/faq')
               .then((res) => {
                 expect(res).to.have.status(200);
                 expect(res.body).to.not.have.property('errors');
@@ -129,10 +129,10 @@ describe('PAGE TEST: View FAQs [GET /faq/guest && GET /faq/admin]', () => {
       .type('form')
       .then((res) => {
         expect(res).to.have.status(200);
-        expect(res.redirects[0]).to.contain('/homeadmin');
+        expect(res.redirects[0]).to.contain('/home');
 
-        // Go to the FAQ page
-        agent.get('/faq/admin')
+        // Go to the FAQ route
+        agent.get('/faq')
           .then((res) => {
             expect(res).to.have.status(200);
             expect(res.body).to.not.have.property('errors');

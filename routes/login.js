@@ -13,17 +13,47 @@ const router = express.Router();
 const db = database.connection;
 const Q = database.queries;
 
-
 router.get('/guest',function(req,res) {
+  if (req.session.userID !== undefined) {
+    db.query(Q.getUserByID, [ req.session.userID ])
+      .then(([rows, fieldData]) => {
+        if (rows.length > 0) {
+          return res.redirect(302, '/home');
+        }
+      })
+      .catch((err) => {
+        res.end();
+        throw err;
+      });
+  }
   
   res.sendFile(path.join(rootDir, 'login.html'));
 });
 
 router.get('/admin',function(req,res) {
+  if (req.session.userID !== undefined) {
+    db.query(Q.getUserByID, [ req.session.userID ])
+      .then(([rows, fieldData]) => {
+        if (rows.length > 0) {
+          return res.redirect(302, '/home');
+        }
+      })
+      .catch((err) => {
+        res.end();
+        throw err;
+      });
+  }
+
   res.sendFile(path.join(rootDir, 'loginadmin.html'));
 });
 
 router.get('/security',function(req,res) {
+  if (req.session.userID === undefined) {
+    return res.redirect('/');
+  } else if (req.session.securityCheck) {
+    return res.redirect('/home');
+  }
+
   res.sendFile(path.join(rootDir, 'security.html'));
 });
 
@@ -32,7 +62,6 @@ router.get('/logout', function(req,res){
   {
     db.query(Q.updateUserLog, [ req.session.userID]);
     req.session.destroy();
-   
     res.redirect('/')
   }
     
@@ -52,7 +81,6 @@ router.post('/guest', (req, res) => {
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         req.session.userID = guestID;
-        db.query(Q.insertNewUserLog, [ guestID, true ]);
         res.redirect(302, '/login/security');
       } else {
         errors.push('Invalid credentials. Either staff ID or password is incorrect.');
@@ -68,9 +96,10 @@ router.post('/guest', (req, res) => {
 });
 
 router.post('/security', (req, res) => {
-  if(req.session.userID === undefined) {
-    res.redirect('/');
-    return;
+  if (req.session.userID === undefined) {
+    return res.redirect('/');
+  } else if (req.session.securityCheck) {
+    return res.redirect('/home');
   }
 
   const guestName  = req.body.gname;
@@ -79,14 +108,21 @@ router.post('/security', (req, res) => {
   const errors = checkGuestSecurityInput(guestName, childName);
 
   if (errors.length > 0) {
-    res.status(401).json({ errors: errors });
-    return;
+    return res.status(401).json({ errors: errors });
   }
  
   db.query(Q.updateGuestUser, [ guestName, childName, req.session.userID ])
     .then(function([rows, fieldData]) {
       if (rows.affectedRows > 0) {
-        res.redirect('/home');
+        db.query(Q.insertNewUserLog, [ req.session.userID, true ])
+          .then(() => {
+            req.session.securityCheck = true;
+            return res.redirect(302, '/home');
+          })
+          .catch((err) => {
+            res.end();
+            throw err;
+          });
       } else {
         errors.push('Something went wrong on saving guest information');
         res.status(401).json({ errors: errors });
@@ -112,9 +148,15 @@ router.post('/admin', (req, res) => {
     .then(function([rows, fieldData]) {
       if (rows.length > 0) {
         req.session.userID = adminID;
-        db.query(Q.insertNewUserLog, [ adminID, true ]);
-        
-        res.redirect(302, '/homeadmin');
+        req.session.securityCheck = true;
+        db.query(Q.insertNewUserLog, [ adminID, true ])
+          .then(() => {
+            return res.redirect(302, '/home');
+          })
+          .catch((err) => {
+            res.end();
+            throw err;
+          });
       } else {
         errors.push('Invalid credentials. Either staff ID or password is incorrect.');
         res.status(401).json({ errors: errors });

@@ -19,15 +19,32 @@ router.use((req, res, next) => {
   }
 
   next();  
-})
+});
 
-router.get('/guest', (req,res)=>{
+router.get('/', (req, res, next) => {
+  db.query(Q.getUserByID, [ req.session.userID ])
+    .then(([rows, fieldData]) => {
+      if (rows.length > 0) {
+        if (rows[0].isAdmin === 1) {
+          return res.redirect(302, '/faq/admin');
+        } else {
+          return res.redirect(302, '/faq/guest');
+        }
+      }
+    })
+    .catch((err) => {
+      res.end();
+      throw err;
+    })
+});
+
+router.get('/guest', (req, res) => {
   db.query(Q.userType, [ req.session.userID, false])
   .then(function([rows, fieldData]) {
     if (rows.length > 0) {
       res.sendFile(path.join(rootDir, 'faq.html'));
     } else {
-      res.redirect('/homeadmin');
+      res.redirect('/home');
     }
   })
   .catch(function(err) {
@@ -36,7 +53,7 @@ router.get('/guest', (req,res)=>{
   });
 });
 
-router.get('/select', (req,res)=>{
+router.get('/select', (req, res) => {
   db.query(Q.getFAQs)
     .then(([rows, fieldData]) => {
       db.query(Q.getMostRecentFAQLogs).then(function([logrows,fieldData]){
@@ -91,7 +108,7 @@ router.post('/add', (req,res) =>{
               throw err;
             });
             
-          res.redirect('/faq/admin');
+          res.redirect('/faq');
         })
         .catch(function(err) {
             res.end();
@@ -100,7 +117,7 @@ router.post('/add', (req,res) =>{
     });
 });
 
-router.get('/edit', (req,res)=>{
+router.get('/edit', (req, res) => {
   const ques = req.body.ques;
   const answer = req.body.answer;
 
